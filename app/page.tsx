@@ -44,6 +44,22 @@ const projects = [
   },
   {
     id: "03",
+    title: "Success Society",
+    subtitle: "Entrepreneur Community Platform",
+    desc: "Built and launched a full-stack membership platform connecting entrepreneurs across e-commerce, trading, content creation, and agencies. Features a Discord-integrated community, niche channels, resource library, and a freemium model with a paid Builder tier in development.",
+    tags: ["Next.js", "TypeScript", "Discord", "Stripe", "Tailwind CSS"],
+    highlights: [
+      "Live at successsociety.co",
+      "50+ entrepreneurs onboarded",
+      "6 business niche channels",
+      "Freemium + Builder Plan model",
+    ],
+    repo: "https://successsociety.co",
+    color: "emerald",
+    featured: false,
+  },
+  {
+    id: "04",
     title: "Linux Hardening",
     subtitle: "Production Server Security Engagement",
     desc: "Conducted a full security hardening engagement for Baker Street Corporation's production Linux infrastructure. Implemented access controls, PAM password policies, SSH hardening, service audits, and automated compliance scripts with cron-based scheduling.",
@@ -67,7 +83,7 @@ const skills: Record<string, string[]> = {
   "Cloud & DevOps": ["AWS EC2", "AWS RDS", "CloudWatch", "Docker", "Caddy", "Linux Server"],
 };
 
-type AccentColor = "cyan" | "indigo" | "violet";
+type AccentColor = "cyan" | "indigo" | "violet" | "emerald";
 
 const accents: Record<AccentColor, {
   border: string;
@@ -104,6 +120,15 @@ const accents: Record<AccentColor, {
     num: "text-violet-400",
     btn: "bg-violet-400 text-black hover:bg-violet-300",
     bullet: "text-violet-400",
+  },
+  emerald: {
+    border: "border-emerald-500/25 hover:border-emerald-500/60",
+    badgeBorder: "border-emerald-500/20",
+    badgeBg: "bg-emerald-500/5",
+    badgeText: "text-emerald-300",
+    num: "text-emerald-400",
+    btn: "bg-emerald-400 text-black hover:bg-emerald-300",
+    bullet: "text-emerald-400",
   },
 };
 
@@ -234,7 +259,7 @@ export default function Home() {
 
           <div className="mt-16 flex flex-wrap gap-10 border-t border-white/[0.06] pt-8">
             {[
-              { label: "Projects Shipped", value: "3+" },
+              { label: "Projects Shipped", value: "4+" },
               { label: "Focus Areas", value: "2" },
               { label: "University", value: "MSU" },
               { label: "Status", value: "Open to Roles" },
