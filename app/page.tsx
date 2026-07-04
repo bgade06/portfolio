@@ -44,33 +44,32 @@ const projects = [
   },
   {
     id: "03",
-    title: "Success Society",
-    subtitle: "Entrepreneur Community Platform",
-    desc: "Built and launched a full-stack membership platform connecting entrepreneurs across e-commerce, trading, content creation, and agencies. Features a Discord-integrated community, niche channels, resource library, and a freemium model with a paid Builder tier in development.",
-    tags: ["Next.js", "TypeScript", "Discord", "Stripe", "Tailwind CSS"],
+    title: "PickleNest",
+    subtitle: "Pickleball Community & Matchmaking Platform",
+    desc: "Built a modern platform for pickleball players to discover nearby games, connect with other players, and organize local matches. Focused on fast discovery flows, clean user profiles, and a polished mobile-first experience for recreational players.",
+    tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Community Platform"],
     highlights: [
-      "Live at successsociety.co",
-      "50+ entrepreneurs onboarded",
-      "6 business niche channels",
-      "Freemium + Builder Plan model",
+      "Nearby game discovery",
+      "Player profiles & availability",
+      "Mobile-first interface",
+      "Community-focused UX",
     ],
-    repo: "https://successsociety.co",
+    repo: "https://thepicklenest.com/",
     color: "emerald",
     featured: false,
   },
   {
     id: "04",
-    title: "Linux Hardening",
-    subtitle: "Production Server Security Engagement",
-    desc: "Conducted a full security hardening engagement for Baker Street Corporation's production Linux infrastructure. Implemented access controls, PAM password policies, SSH hardening, service audits, and automated compliance scripts with cron-based scheduling.",
-    tags: ["Bash", "Linux", "PAM", "SSH", "UFW", "Lynis", "Tripwire", "Cron"],
+    title: "Crypto Bot",
+    subtitle: "Automated Trading & Market Monitoring System",
+    desc: "Developed a crypto trading bot that monitors market signals, evaluates strategy rules, and automates trade decisions with configurable risk controls. Designed the system around clear logging, repeatable strategy testing, and safe execution boundaries.",
+    tags: ["Python", "APIs", "Automation", "Trading Strategy", "Risk Controls", "Logging"],
     highlights: [
-      "SSH hardening & root access disabled",
-      "PAM password policy enforcement",
-      "Automated monthly/weekly scripts",
-      "Lynis & Tripwire integration",
+      "Market signal monitoring",
+      "Configurable strategy rules",
+      "Trade automation workflow",
+      "Risk-aware execution design",
     ],
-    repo: "https://github.com/bgade06/linux-hardening",
     color: "violet",
     featured: false,
   },
@@ -148,8 +147,10 @@ export default function Home() {
     } else if (deleting && displayed.length > 0) {
       timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
     } else if (deleting && displayed.length === 0) {
-      setDeleting(false);
-      setRoleIdx((i) => (i + 1) % roles.length);
+      timeout = setTimeout(() => {
+        setDeleting(false);
+        setRoleIdx((i) => (i + 1) % roles.length);
+      }, 0);
     }
 
     return () => clearTimeout(timeout);
@@ -242,12 +243,6 @@ export default function Home() {
               View Projects
             </a>
             <a
-              href="/resume.pdf"
-              className="rounded-xl border border-cyan-400/30 px-7 py-3 text-sm font-bold text-cyan-400 transition-all hover:border-cyan-400 hover:bg-cyan-400/10"
-            >
-              Resume
-            </a>
-            <a
               href="https://github.com/bgade06"
               target="_blank"
               rel="noreferrer"
@@ -281,7 +276,7 @@ export default function Home() {
       {/* About */}
       <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
         <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">// 01</p>
+          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 01"}</p>
           <h2 className="text-4xl font-black tracking-tight">About</h2>
         </div>
 
@@ -375,7 +370,7 @@ export default function Home() {
       {/* Projects */}
       <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
         <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">// 02</p>
+          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 02"}</p>
           <h2 className="text-4xl font-black tracking-tight">Projects</h2>
           <p className="mt-2 text-slate-500 font-mono text-sm">
             Real work. Real deployments. Real problems solved.
@@ -425,24 +420,26 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  <div className="flex md:flex-col gap-3 shrink-0">
-                    <a
-                      href={p.repo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`rounded-xl px-5 py-2.5 text-sm font-bold transition-all text-center ${a.btn}`}
-                    >
-                      View →
-                    </a>
-                    <a
-                      href={p.repo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-bold text-slate-300 transition-all hover:border-white/25 hover:text-white hover:bg-white/5 text-center"
-                    >
-                      Code
-                    </a>
-                  </div>
+                  {p.repo && (
+                    <div className="flex md:flex-col gap-3 shrink-0">
+                      <a
+                        href={p.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`rounded-xl px-5 py-2.5 text-sm font-bold transition-all text-center ${a.btn}`}
+                      >
+                        View →
+                      </a>
+                      <a
+                        href={p.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-bold text-slate-300 transition-all hover:border-white/25 hover:text-white hover:bg-white/5 text-center"
+                      >
+                        Code
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -453,7 +450,7 @@ export default function Home() {
       {/* Skills */}
       <section id="skills" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
         <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">// 03</p>
+          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 03"}</p>
           <h2 className="text-4xl font-black tracking-tight">Skills</h2>
         </div>
 
@@ -485,7 +482,7 @@ export default function Home() {
       {/* Contact */}
       <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
         <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">// 04</p>
+          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 04"}</p>
           <h2 className="text-4xl font-black tracking-tight">Contact</h2>
         </div>
 
