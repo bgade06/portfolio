@@ -1,85 +1,77 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-const roles = [
-  "Software Engineer",
-  "Security Researcher",
-  "Full-Stack Developer",
-  "Systems Builder",
-];
-
 const projects = [
   {
     id: "01",
-    title: "Digeon",
-    subtitle: "AI Tools Marketplace & Developer Platform",
-    desc: "Co-founded and architected a full-stack platform where users discover and deploy verified AI agents, and developers publish and monetize their tools. Took the product from idea to production serving early adopters and small businesses.",
-    tags: ["Flask", "Python", "MySQL", "Docker", "AWS EC2", "AWS RDS", "Stripe", "SQLAlchemy", "Caddy"],
+    title: "Solana Market Intelligence Platform",
+    subtitle: "Real-time trading signals and wallet analysis at scale",
+    desc: "Built a distributed backend that processes market data and generates trading signals for crypto markets. The system handles WebSocket feeds in real-time, runs ML pipelines asynchronously, and serves an API for paper trading. Everything is designed around low latency and high throughput.",
+    tags: ["FastAPI", "PostgreSQL", "Redis", "SQLAlchemy", "WebSockets", "Async", "Docker"],
     highlights: [
-      "Flask microservices (6 modules)",
-      "Stripe payment & subscriptions",
-      "AWS EC2 + RDS + CloudWatch",
-      "Caddy reverse proxy",
+      "Async data ingestion from multiple exchanges",
+      "ML-based alpha scoring engine",
+      "Real-time WebSocket API",
+      "Explainable signal generation with paper trading",
     ],
-    repo: "https://github.com/bgade06/digeon",
+    repo: "https://github.com/bgade06",
     color: "cyan",
     featured: true,
   },
   {
     id: "02",
-    title: "ThreatWatch",
-    subtitle: "Splunk SIEM — Enterprise Threat Detection",
-    desc: "Built a comprehensive threat detection and incident response framework using Splunk Security Essentials. Monitors Windows Server and Apache HTTP logs for brute-force attacks, privilege escalation, and anomalous traffic using the MITRE ATT&CK and Cyber Kill Chain frameworks.",
-    tags: ["Splunk SSE", "SIEM", "Windows Server", "Apache", "MITRE ATT&CK", "Kill Chain"],
+    title: "The Pickle Nest",
+    subtitle: "Production backend for location-based discovery",
+    desc: "Built the backend for a platform that helps users discover and organize nearby games. The system handles complex geospatial queries, manages 22 database models, and exposes 49 APIs for game discovery, player profiles, and real-time matching. Deployed on production infrastructure with monitoring and caching.",
+    tags: ["Next.js", "PostgreSQL", "Prisma", "Geospatial", "APIs", "Production"],
     highlights: [
-      "Real-time alerting & dashboards",
-      "Brute-force & login abuse detection",
-      "Geo-traffic anomaly analysis",
-      "Post-incident log forensics",
-    ],
-    repo: "https://github.com/bgade06/threatwatch",
-    color: "indigo",
-    featured: false,
-  },
-  {
-    id: "03",
-    title: "PickleNest",
-    subtitle: "Pickleball Community & Matchmaking Platform",
-    desc: "Built a modern platform for pickleball players to discover nearby games, connect with other players, and organize local matches. Focused on fast discovery flows, clean user profiles, and a polished mobile-first experience for recreational players.",
-    tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Community Platform"],
-    highlights: [
-      "Nearby game discovery",
-      "Player profiles & availability",
-      "Mobile-first interface",
-      "Community-focused UX",
+      "49 production APIs serving discovery and matching",
+      "22 database models with complex relationships",
+      "Geospatial search using PostGIS",
+      "Sub-200ms query latency with Redis caching",
     ],
     repo: "https://thepicklenest.com/",
     color: "emerald",
     featured: false,
   },
   {
-    id: "04",
-    title: "Crypto Bot",
-    subtitle: "Automated Trading & Market Monitoring System",
-    desc: "Developed a crypto trading bot that monitors market signals, evaluates strategy rules, and automates trade decisions with configurable risk controls. Designed the system around clear logging, repeatable strategy testing, and safe execution boundaries.",
-    tags: ["Python", "APIs", "Automation", "Trading Strategy", "Risk Controls", "Logging"],
+    id: "03",
+    title: "Success Society",
+    subtitle: "AI-powered SaaS for lead generation workflows",
+    desc: "Built a multi-tenant SaaS platform that uses AI to generate qualified leads and manage subscription workflows. The backend handles Stripe payments, Discord integrations, and Anthropic API orchestration. Users pay for leads monthly; the system tracks usage and billing in real-time.",
+    tags: ["Next.js", "Supabase", "Stripe", "Anthropic", "Discord", "SaaS"],
     highlights: [
-      "Market signal monitoring",
-      "Configurable strategy rules",
-      "Trade automation workflow",
-      "Risk-aware execution design",
+      "Stripe subscription and metered billing",
+      "Discord bot integration for notifications",
+      "Anthropic API for AI lead generation",
+      "Real-time usage tracking and analytics",
     ],
+    repo: "https://github.com/bgade06",
     color: "violet",
+    featured: false,
+  },
+  {
+    id: "04",
+    title: "Backend Internship",
+    subtitle: "Production microservices on AWS",
+    desc: "Built Flask microservices as part of a professional engineering team. Deployed and maintained services on AWS infrastructure, wrote integration tests, and participated in code review. Learned how production systems handle scale and reliability.",
+    tags: ["Flask", "Python", "AWS EC2", "AWS RDS", "Docker", "Integration Testing"],
+    highlights: [
+      "6 Flask microservices across multiple domains",
+      "AWS deployment with CloudWatch monitoring",
+      "Database migrations and schema design",
+      "Integration test coverage and CI/CD",
+    ],
+    color: "indigo",
     featured: false,
   },
 ];
 
 const skills: Record<string, string[]> = {
-  Languages: ["Python", "TypeScript", "JavaScript", "Bash", "SQL", "HTML/CSS"],
-  Frameworks: ["Flask", "React", "Next.js", "Node.js", "SQLAlchemy"],
-  Security: ["Splunk SIEM", "MITRE ATT&CK", "PAM", "UFW", "Lynis", "SSH Hardening", "Tripwire"],
-  "Cloud & DevOps": ["AWS EC2", "AWS RDS", "CloudWatch", "Docker", "Caddy", "Linux Server"],
+  "Backend & APIs": ["FastAPI", "Flask", "Node.js", "PostgreSQL", "Redis", "SQLAlchemy", "Prisma"],
+  "Databases": ["PostgreSQL", "Supabase", "Schema Design", "Geospatial (PostGIS)", "Indexing", "Query Optimization"],
+  "Async & Concurrency": ["WebSockets", "Async/Await", "Background Jobs", "Event Streaming", "Real-time Systems"],
+  "Cloud": ["AWS EC2", "AWS RDS", "Docker", "Linux", "Monitoring"],
+  "Languages": ["Python", "TypeScript", "SQL", "Stripe API", "Discord API", "Anthropic API"],
 };
 
 type AccentColor = "cyan" | "indigo" | "violet" | "emerald";
@@ -132,29 +124,6 @@ const accents: Record<AccentColor, {
 };
 
 export default function Home() {
-  const [roleIdx, setRoleIdx] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const role = roles[roleIdx];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!deleting && displayed.length < role.length) {
-      timeout = setTimeout(() => setDisplayed(role.slice(0, displayed.length + 1)), 75);
-    } else if (!deleting && displayed.length === role.length) {
-      timeout = setTimeout(() => setDeleting(true), 2200);
-    } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
-    } else if (deleting && displayed.length === 0) {
-      timeout = setTimeout(() => {
-        setDeleting(false);
-        setRoleIdx((i) => (i + 1) % roles.length);
-      }, 0);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [displayed, deleting, roleIdx]);
 
   return (
     <main className="min-h-screen bg-[#050510] text-slate-200">
@@ -198,7 +167,7 @@ export default function Home() {
       <section className="relative z-10 mx-auto flex min-h-[92vh] max-w-6xl flex-col justify-center px-6">
         <div className="max-w-4xl">
           <p className="font-mono text-cyan-400 text-sm mb-5 tracking-wider">
-            &gt; Hello, world. I&apos;m
+            &gt; Backend Engineer
           </p>
 
           <h1 className="text-6xl md:text-[88px] font-black tracking-tighter leading-none mb-5">
@@ -221,18 +190,9 @@ export default function Home() {
             </span>
           </h1>
 
-          <div className="font-mono text-lg md:text-xl text-slate-300 mb-7 flex items-center h-8">
-            <span className="text-cyan-400 mr-2">$</span>
-            <span>{displayed}</span>
-            <span className="inline-block w-[2px] h-5 bg-cyan-400 ml-0.5 animate-blink" />
-          </div>
-
           <p className="text-slate-400 max-w-2xl text-base md:text-lg leading-relaxed mb-10">
             CS student at{" "}
-            <span className="text-white font-semibold">Michigan State University</span> building{" "}
-            <span className="text-cyan-400 font-medium">secure</span>,{" "}
-            <span className="text-indigo-400 font-medium">scalable</span> systems — from AI
-            marketplaces to enterprise SIEM platforms and hardened Linux infrastructure.
+            <span className="text-white font-semibold">Michigan State University.</span> I build backends that handle real scale: distributed systems, async workers, ML pipelines, real-time APIs. Production experience on AWS with Python, TypeScript, and PostgreSQL.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -254,10 +214,10 @@ export default function Home() {
 
           <div className="mt-16 flex flex-wrap gap-10 border-t border-white/[0.06] pt-8">
             {[
-              { label: "Projects Shipped", value: "4+" },
-              { label: "Focus Areas", value: "2" },
-              { label: "University", value: "MSU" },
-              { label: "Status", value: "Open to Roles" },
+              { label: "Active Projects", value: "4" },
+              { label: "Focus", value: "Backend" },
+              { label: "Languages", value: "Python, TS" },
+              { label: "Status", value: "Open to Internships" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="text-2xl font-black text-white">{stat.value}</div>
@@ -280,90 +240,16 @@ export default function Home() {
           <h2 className="text-4xl font-black tracking-tight">About</h2>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-2 md:items-start">
-          <div className="space-y-5">
-            <p className="text-slate-300 leading-relaxed text-lg">
-              I&apos;m a Computer Science student at{" "}
-              <span className="text-white font-semibold">Michigan State University</span> with a dual
-              focus on{" "}
-              <span className="text-cyan-400 font-semibold">cybersecurity</span> and{" "}
-              <span className="text-indigo-400 font-semibold">full-stack development</span>.
-            </p>
-            <p className="text-slate-400 leading-relaxed">
-              I&apos;ve co-founded and shipped a full-stack AI marketplace, built enterprise
-              threat-detection pipelines using Splunk and MITRE ATT&CK, and conducted real security
-              hardening engagements for production Linux servers.
-            </p>
-            <p className="text-slate-400 leading-relaxed">
-              I care about systems that are intentionally designed — secure from the ground up,
-              clean in architecture, and reliable in production.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <span className="font-mono text-xs border border-cyan-400/30 text-cyan-400 px-3 py-1.5 rounded-lg bg-cyan-400/5">
-                MSU Cybersecurity Bootcamp
-              </span>
-              <span className="font-mono text-xs border border-indigo-400/30 text-indigo-400 px-3 py-1.5 rounded-lg bg-indigo-400/5">
-                CompTIA Network+ (in progress)
-              </span>
-            </div>
-          </div>
-
-          {/* Terminal card */}
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02]">
-              <div className="w-3 h-3 rounded-full bg-red-500/70" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-              <div className="w-3 h-3 rounded-full bg-green-500/70" />
-              <span className="font-mono text-xs text-slate-500 ml-2">bharadwaj.json</span>
-            </div>
-            <div className="p-6 font-mono text-sm leading-7">
-              <p className="text-slate-500">{"{"}</p>
-              <p className="pl-5">
-                <span className="text-indigo-400">&quot;name&quot;</span>
-                <span className="text-slate-500">: </span>
-                <span className="text-cyan-300">&quot;Bharadwaj Gade&quot;</span>
-                <span className="text-slate-500">,</span>
-              </p>
-              <p className="pl-5">
-                <span className="text-indigo-400">&quot;university&quot;</span>
-                <span className="text-slate-500">: </span>
-                <span className="text-cyan-300">&quot;Michigan State University&quot;</span>
-                <span className="text-slate-500">,</span>
-              </p>
-              <p className="pl-5">
-                <span className="text-indigo-400">&quot;degree&quot;</span>
-                <span className="text-slate-500">: </span>
-                <span className="text-cyan-300">&quot;Computer Science&quot;</span>
-                <span className="text-slate-500">,</span>
-              </p>
-              <p className="pl-5">
-                <span className="text-indigo-400">&quot;focus&quot;</span>
-                <span className="text-slate-500">: [</span>
-              </p>
-              <p className="pl-10">
-                <span className="text-green-400">&quot;Cybersecurity&quot;</span>
-                <span className="text-slate-500">,</span>
-              </p>
-              <p className="pl-10">
-                <span className="text-green-400">&quot;Full-Stack Development&quot;</span>
-              </p>
-              <p className="pl-5">
-                <span className="text-slate-500">],</span>
-              </p>
-              <p className="pl-5">
-                <span className="text-indigo-400">&quot;email&quot;</span>
-                <span className="text-slate-500">: </span>
-                <span className="text-cyan-300">&quot;gadebhar@msu.edu&quot;</span>
-                <span className="text-slate-500">,</span>
-              </p>
-              <p className="pl-5">
-                <span className="text-indigo-400">&quot;status&quot;</span>
-                <span className="text-slate-500">: </span>
-                <span className="text-yellow-400">&quot;Open to Opportunities&quot;</span>
-              </p>
-              <p className="text-slate-500">{"}"}</p>
-            </div>
-          </div>
+        <div className="max-w-3xl space-y-6">
+          <p className="text-slate-300 leading-relaxed text-lg">
+            I&apos;m a CS student at Michigan State. I build production backends that scale. I've shipped distributed systems handling real-time trading data, APIs serving hundreds of endpoints, and SaaS platforms processing payments.
+          </p>
+          <p className="text-slate-400 leading-relaxed">
+            On the backend side: I design schemas, optimize queries, build async workers, and think about production reliability. I care about code clarity and systems that don't surprise you at 3am.
+          </p>
+          <p className="text-slate-400 leading-relaxed">
+            Current focus: distributed systems, real-time APIs, ML infrastructure, and anything that moves data fast and reliably.
+          </p>
         </div>
       </section>
 
@@ -372,9 +258,6 @@ export default function Home() {
         <div className="mb-12">
           <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 02"}</p>
           <h2 className="text-4xl font-black tracking-tight">Projects</h2>
-          <p className="mt-2 text-slate-500 font-mono text-sm">
-            Real work. Real deployments. Real problems solved.
-          </p>
         </div>
 
         <div className="space-y-5">
