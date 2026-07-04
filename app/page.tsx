@@ -14,6 +14,7 @@ const projects = [
       "Explainable signal generation with paper trading",
     ],
     repo: "https://github.com/bgade06",
+    link: "/projects/solana",
     color: "cyan",
     featured: true,
   },
@@ -30,6 +31,7 @@ const projects = [
       "Sub-200ms query latency with Redis caching",
     ],
     repo: "https://thepicklenest.com/",
+    link: "/projects/pickle-nest",
     color: "emerald",
     featured: false,
   },
@@ -46,6 +48,7 @@ const projects = [
       "Real-time usage tracking and analytics",
     ],
     repo: "https://github.com/bgade06",
+    link: "/projects/success-society",
     color: "violet",
     featured: false,
   },
@@ -61,6 +64,7 @@ const projects = [
       "Database migrations and schema design",
       "Integration test coverage and CI/CD",
     ],
+    link: "/projects/internship",
     color: "indigo",
     featured: false,
   },
@@ -303,24 +307,26 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  {p.repo && (
+                  {(p.link || p.repo) && (
                     <div className="flex md:flex-col gap-3 shrink-0">
-                      <a
-                        href={p.repo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`rounded-xl px-5 py-2.5 text-sm font-bold transition-all text-center ${a.btn}`}
-                      >
-                        View →
-                      </a>
-                      <a
-                        href={p.repo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-bold text-slate-300 transition-all hover:border-white/25 hover:text-white hover:bg-white/5 text-center"
-                      >
-                        Code
-                      </a>
+                      {p.link && (
+                        <a
+                          href={p.link}
+                          className={`rounded-xl px-5 py-2.5 text-sm font-bold transition-all text-center ${a.btn}`}
+                        >
+                          Details →
+                        </a>
+                      )}
+                      {p.repo && (
+                        <a
+                          href={p.repo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-bold text-slate-300 transition-all hover:border-white/25 hover:text-white hover:bg-white/5 text-center"
+                        >
+                          {p.link ? "Code" : "View →"}
+                        </a>
+                      )}
                     </div>
                   )}
                 </div>
