@@ -1,72 +1,91 @@
 "use client";
 
-const projects = [
+const professionalExperience = [
+  {
+    id: "01",
+    company: "Emergtech AI",
+    title: "Software Engineering Intern",
+    subtitle: "Multi-tenant AI orchestration platform",
+    status: "current",
+    desc: "Built backend systems for a multi-tenant SaaS platform that orchestrates AI workflows. Designed and implemented REST APIs, managed database schema evolution, and collaborated with the team through production pull requests and code reviews. Worked on features involving OAuth, third-party API integration (Jira), and AI model coordination.",
+    tags: ["Node.js", "Express.js", "MongoDB", "AWS Bedrock", "OAuth", "REST APIs", "SaaS Architecture"],
+    highlights: [
+      "Multi-tenant backend architecture",
+      "REST API design and implementation",
+      "OAuth integration for third-party apps",
+      "AI orchestration and workflow management",
+      "Production code review and collaboration",
+    ],
+    color: "cyan",
+  },
+  {
+    id: "02",
+    company: "Digeon AI",
+    title: "Software Engineering Intern",
+    subtitle: "Production backend microservices",
+    status: "previous",
+    desc: "Developed and maintained Flask microservices in a production environment. Worked across multiple services handling billing, user management, and content delivery. Designed database schemas, implemented REST APIs, managed Docker containerization, and participated in cloud infrastructure decisions on AWS. Gained hands-on experience with payment processing, CI/CD pipelines, and production deployments.",
+    tags: ["Flask", "Python", "Docker", "Docker Compose", "MySQL", "AWS EC2", "AWS RDS", "Stripe", "REST APIs"],
+    highlights: [
+      "Flask microservices across multiple domains",
+      "Payment processing with Stripe",
+      "Database schema design and migrations",
+      "Docker containerization and deployment",
+      "AWS infrastructure (EC2, RDS)",
+      "Production debugging and monitoring",
+    ],
+    color: "indigo",
+  },
+];
+
+const featuredProjects = [
   {
     id: "01",
     title: "Solana Market Intelligence Platform",
-    subtitle: "Real-time trading signals and wallet analysis at scale",
-    desc: "Built a distributed backend that processes market data and generates trading signals for crypto markets. The system handles WebSocket feeds in real-time, runs ML pipelines asynchronously, and serves an API for paper trading. Everything is designed around low latency and high throughput.",
+    subtitle: "Real-time data ingestion and stream processing",
+    desc: "Built a distributed backend that processes market data and generates trading signals. The system handles WebSocket feeds in real-time, runs ML pipelines asynchronously, and serves an API for paper trading. Designed around low latency and high throughput to handle hundreds of messages per second.",
     tags: ["FastAPI", "PostgreSQL", "Redis", "SQLAlchemy", "WebSockets", "Async", "Docker"],
     highlights: [
-      "Async data ingestion from multiple exchanges",
-      "ML-based alpha scoring engine",
-      "Real-time WebSocket API",
-      "Explainable signal generation with paper trading",
+      "500+ events per second ingestion",
+      "P95 API latency: 45ms",
+      "Async worker architecture for ML pipelines",
+      "Real-time WebSocket updates",
     ],
     repo: "https://github.com/bgade06",
     link: "/projects/solana",
     color: "cyan",
-    featured: true,
   },
   {
     id: "02",
     title: "The Pickle Nest",
-    subtitle: "Production backend for location-based discovery",
-    desc: "Built the backend for a platform that helps users discover and organize nearby games. The system handles complex geospatial queries, manages 22 database models, and exposes 49 APIs for game discovery, player profiles, and real-time matching. Deployed on production infrastructure with monitoring and caching.",
-    tags: ["Next.js", "PostgreSQL", "Prisma", "Geospatial", "APIs", "Production"],
+    subtitle: "Geospatial search and complex data relationships",
+    desc: "Engineered the backend for a platform that helps users discover nearby games through intelligent matching. The system handles geospatial queries at scale, manages 22 related database models, and exposes 49 REST APIs. Built with production-grade architecture including PostGIS indexing and strategic caching.",
+    tags: ["PostgreSQL", "Prisma", "PostGIS", "Redis", "REST APIs", "Production"],
     highlights: [
-      "49 production APIs serving discovery and matching",
-      "22 database models with complex relationships",
-      "Geospatial search using PostGIS",
-      "Sub-200ms query latency with Redis caching",
+      "49 production APIs with clear semantics",
+      "22 normalized database models",
+      "Sub-200ms geospatial queries",
+      "70% cache hit rate with Redis",
     ],
     repo: "https://thepicklenest.com/",
     link: "/projects/pickle-nest",
     color: "emerald",
-    featured: false,
   },
   {
     id: "03",
     title: "Success Society",
-    subtitle: "AI-powered SaaS for lead generation workflows",
-    desc: "Built a multi-tenant SaaS platform that uses AI to generate qualified leads and manage subscription workflows. The backend handles Stripe payments, Discord integrations, and Anthropic API orchestration. Users pay for leads monthly; the system tracks usage and billing in real-time.",
-    tags: ["Next.js", "Supabase", "Stripe", "Anthropic", "Discord", "SaaS"],
+    subtitle: "Multi-tenant SaaS with payment orchestration",
+    desc: "Built a multi-tenant SaaS platform that coordinates multiple external services (Stripe, Anthropic, Discord) for lead generation and subscription management. Implemented metered billing, row-level security for data isolation, and saga patterns for reliable service orchestration.",
+    tags: ["Next.js", "Supabase", "Stripe", "Anthropic", "PostgreSQL", "SaaS Architecture"],
     highlights: [
-      "Stripe subscription and metered billing",
-      "Discord bot integration for notifications",
-      "Anthropic API for AI lead generation",
-      "Real-time usage tracking and analytics",
+      "Zero billing reconciliation errors",
+      "100% multi-tenant data isolation via RLS",
+      "Metered billing with Stripe",
+      "External service orchestration",
     ],
     repo: "https://github.com/bgade06",
     link: "/projects/success-society",
     color: "violet",
-    featured: false,
-  },
-  {
-    id: "04",
-    title: "Backend Internship",
-    subtitle: "Production microservices on AWS",
-    desc: "Built Flask microservices as part of a professional engineering team. Deployed and maintained services on AWS infrastructure, wrote integration tests, and participated in code review. Learned how production systems handle scale and reliability.",
-    tags: ["Flask", "Python", "AWS EC2", "AWS RDS", "Docker", "Integration Testing"],
-    highlights: [
-      "6 Flask microservices across multiple domains",
-      "AWS deployment with CloudWatch monitoring",
-      "Database migrations and schema design",
-      "Integration test coverage and CI/CD",
-    ],
-    link: "/projects/internship",
-    color: "indigo",
-    featured: false,
   },
 ];
 
@@ -272,15 +291,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects */}
-      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
+      {/* Professional Experience */}
+      <section id="experience" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Projects</h2>
-          <p className="text-slate-500 text-sm mt-2">Production systems with detailed engineering breakdown</p>
+          <h2 className="text-3xl font-bold tracking-tight text-white">Professional Experience</h2>
+          <p className="text-slate-500 text-sm mt-2">Software engineering internships building production systems</p>
         </div>
 
         <div className="space-y-5">
-          {projects.map((p) => {
+          {professionalExperience.map((exp) => {
+            const a = accents[exp.color as AccentColor];
+            return (
+              <div
+                key={exp.id}
+                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-8 transition-all duration-300 hover:-translate-y-0.5`}
+              >
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
+                      <h3 className="text-2xl font-bold tracking-tight text-white">{exp.title}</h3>
+                      <span className={`text-sm font-semibold px-2.5 py-1 rounded-full ${
+                        exp.status === 'current'
+                          ? 'bg-green-500/10 text-green-400 border border-green-500/30'
+                          : 'bg-slate-500/10 text-slate-400 border border-slate-500/30'
+                      }`}>
+                        {exp.status === 'current' ? 'Current' : 'Previous'}
+                      </span>
+                    </div>
+                    <p className="text-lg text-cyan-400 font-semibold mb-1">{exp.company}</p>
+                    <p className={`font-mono text-xs ${a.num} opacity-70 mb-4`}>{exp.subtitle}</p>
+                    <p className="text-slate-300 leading-relaxed mb-5 max-w-2xl">{exp.desc}</p>
+
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {exp.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className={`font-mono text-xs border ${a.badgeBorder} ${a.badgeBg} ${a.badgeText} px-2.5 py-1 rounded-lg`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                      {exp.highlights.map((h) => (
+                        <li key={h} className="flex items-center gap-2 text-sm text-slate-400">
+                          <span className={`${a.bullet} text-xs shrink-0`}>▸</span>
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold tracking-tight text-white">Featured Projects</h2>
+          <p className="text-slate-500 text-sm mt-2">Personal projects demonstrating backend engineering depth</p>
+        </div>
+
+        <div className="space-y-5">
+          {featuredProjects.map((p) => {
             const a = accents[p.color as AccentColor];
             return (
               <div
@@ -291,12 +368,7 @@ export default function Home() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-1.5 flex-wrap">
                       <span className={`font-mono text-xs ${a.num}`}>{p.id}</span>
-                      <h3 className="text-2xl font-black tracking-tight">{p.title}</h3>
-                      {p.featured && (
-                        <span className="font-mono text-[10px] border border-cyan-400/30 text-cyan-400 px-2 py-0.5 rounded-full bg-cyan-400/5">
-                          featured
-                        </span>
-                      )}
+                      <h3 className="text-2xl font-bold tracking-tight">{p.title}</h3>
                     </div>
                     <p className={`font-mono text-xs ${a.num} opacity-70 mb-4`}>{p.subtitle}</p>
                     <p className="text-slate-300 leading-relaxed mb-5 max-w-2xl">{p.desc}</p>
