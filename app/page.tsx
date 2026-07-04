@@ -168,100 +168,115 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 mx-auto flex min-h-[92vh] max-w-6xl flex-col justify-center px-6">
-        <div className="max-w-4xl">
-          <p className="font-mono text-cyan-400 text-sm mb-5 tracking-wider">
-            &gt; Backend Engineer
-          </p>
+      <section className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-between px-6 py-16 md:py-20">
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="max-w-3xl">
+            {/* Name and Title */}
+            <div className="mb-8">
+              <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-2">
+                Bharadwaj Gade
+              </h1>
+              <p className="text-xl text-cyan-400 font-semibold">Backend Engineer</p>
+              <p className="text-sm text-slate-500 mt-1">Michigan State University</p>
+            </div>
 
-          <h1 className="text-6xl md:text-[88px] font-black tracking-tighter leading-none mb-5">
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%)",
-              }}
-            >
-              BHARADWAJ
-            </span>
-            <br />
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #22d3ee 0%, #818cf8 100%)",
-              }}
-            >
-              GADE
-            </span>
-          </h1>
+            {/* Value Prop */}
+            <p className="text-lg text-slate-300 max-w-2xl leading-relaxed mb-12">
+              I build distributed systems that scale. 49 production APIs. 500+ events per second. Sub-200ms query latency. PostgreSQL, FastAPI, Redis, AWS.
+            </p>
 
-          <p className="text-slate-400 max-w-2xl text-base md:text-lg leading-relaxed mb-10">
-            CS student at{" "}
-            <span className="text-white font-semibold">Michigan State University.</span> I build backends that handle real scale: distributed systems, async workers, ML pipelines, real-time APIs. Production experience on AWS with Python, TypeScript, and PostgreSQL.
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              className="rounded-xl bg-cyan-400 px-7 py-3 text-sm font-bold text-black transition-all hover:bg-cyan-300 hover:shadow-[0_0_28px_rgba(34,211,238,0.45)]"
-            >
-              View Projects
-            </a>
-            <a
-              href="https://github.com/bgade06"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-xl border border-white/10 px-7 py-3 text-sm font-bold text-slate-300 transition-all hover:border-white/25 hover:text-white hover:bg-white/5"
-            >
-              GitHub
-            </a>
-          </div>
-
-          <div className="mt-16 flex flex-wrap gap-10 border-t border-white/[0.06] pt-8">
-            {[
-              { label: "Active Projects", value: "4" },
-              { label: "Focus", value: "Backend" },
-              { label: "Languages", value: "Python, TS" },
-              { label: "Status", value: "Open to Internships" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="text-2xl font-black text-white">{stat.value}</div>
-                <div className="text-xs font-mono text-slate-500 mt-0.5">{stat.label}</div>
+            {/* Key Proof Points */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+              <div>
+                <div className="text-2xl font-black text-white">49</div>
+                <div className="text-xs text-slate-400 mt-1">Production APIs</div>
               </div>
-            ))}
+              <div>
+                <div className="text-2xl font-black text-white">22</div>
+                <div className="text-xs text-slate-400 mt-1">Database Models</div>
+              </div>
+              <div>
+                <div className="text-2xl font-black text-white">500+</div>
+                <div className="text-xs text-slate-400 mt-1">Events/Second</div>
+              </div>
+              <div>
+                <div className="text-2xl font-black text-white">&lt;200ms</div>
+                <div className="text-xs text-slate-400 mt-1">Query Latency</div>
+              </div>
+              <div>
+                <div className="text-2xl font-black text-white">3</div>
+                <div className="text-xs text-slate-400 mt-1">Shipped SaaS</div>
+              </div>
+              <div>
+                <div className="text-2xl font-black text-white">2</div>
+                <div className="text-xs text-slate-400 mt-1">Years Production</div>
+              </div>
+            </div>
+
+            {/* Systems Built */}
+            <div className="mb-12">
+              <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Systems</p>
+              <div className="flex flex-wrap gap-2">
+                {["Distributed Systems", "Real-time APIs", "Async Workers", "Geospatial Search", "Metered Billing", "Multi-tenant SaaS"].map((system) => (
+                  <span key={system} className="px-3 py-1 text-sm bg-white/5 border border-white/10 rounded-lg text-slate-300">
+                    {system}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="flex gap-4">
+              <a
+                href="#projects"
+                className="rounded-lg bg-cyan-400 px-6 py-3 text-sm font-semibold text-black hover:bg-cyan-300 transition-colors"
+              >
+                View Projects
+              </a>
+              <a
+                href="https://github.com/bgade06"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:border-white/40 hover:bg-white/5 transition-colors"
+              >
+                GitHub
+              </a>
+              <a
+                href="mailto:gadebhar@msu.edu"
+                className="rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:border-white/40 hover:bg-white/5 transition-colors"
+              >
+                Contact
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-700">
-          <span className="text-xs font-mono tracking-widest">scroll</span>
-          <div className="h-8 w-px bg-gradient-to-b from-slate-600 to-transparent" />
+        {/* Scroll indicator */}
+        <div className="flex justify-center">
+          <div className="text-xs text-slate-600 font-mono">↓ scroll to see projects</div>
         </div>
       </section>
 
       {/* About */}
-      <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
-        <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 01"}</p>
-          <h2 className="text-4xl font-black tracking-tight">About</h2>
+      <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold tracking-tight text-white">Background</h2>
         </div>
-
-        <div className="max-w-3xl space-y-6">
-          <p className="text-slate-300 leading-relaxed text-lg">
-            I&apos;m a CS student at Michigan State. I build production backends that scale. I've shipped distributed systems handling real-time trading data, APIs serving hundreds of endpoints, and SaaS platforms processing payments.
+        <div className="max-w-2xl">
+          <p className="text-slate-300 leading-relaxed mb-4">
+            I shipped distributed systems, real-time APIs, and SaaS platforms while learning systems design through production code. I care about reliability, performance, and clean architecture.
           </p>
-          <p className="text-slate-400 leading-relaxed">
-            On the backend side: I design schemas, optimize queries, build async workers, and think about production reliability. I care about code clarity and systems that don't surprise you at 3am.
-          </p>
-          <p className="text-slate-400 leading-relaxed">
-            Current focus: distributed systems, real-time APIs, ML infrastructure, and anything that moves data fast and reliably.
+          <p className="text-slate-400 leading-relaxed text-sm">
+            Focused on: database design, query optimization, async systems, cloud infrastructure, and building systems that scale without surprises.
           </p>
         </div>
       </section>
 
       {/* Projects */}
-      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
+      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 02"}</p>
-          <h2 className="text-4xl font-black tracking-tight">Projects</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-white">Projects</h2>
+          <p className="text-slate-500 text-sm mt-2">Production systems with detailed engineering breakdown</p>
         </div>
 
         <div className="space-y-5">
@@ -337,10 +352,9 @@ export default function Home() {
       </section>
 
       {/* Skills */}
-      <section id="skills" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
+      <section id="skills" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 03"}</p>
-          <h2 className="text-4xl font-black tracking-tight">Skills</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-white">Stack</h2>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -369,49 +383,41 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
+      <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12">
-          <p className="font-mono text-cyan-400 text-xs tracking-widest mb-2">{"// 04"}</p>
-          <h2 className="text-4xl font-black tracking-tight">Contact</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-white">Get in Touch</h2>
         </div>
 
-        <div className="relative rounded-2xl border border-white/10 bg-white/[0.02] p-10 md:p-14 overflow-hidden">
-          <div className="pointer-events-none absolute top-0 right-0 h-60 w-60 bg-cyan-500/[0.06] rounded-full blur-3xl" />
-          <div className="pointer-events-none absolute bottom-0 left-0 h-60 w-60 bg-indigo-500/[0.04] rounded-full blur-3xl" />
-
-          <p className="text-slate-300 text-lg max-w-xl mb-8 relative z-10">
-            Open to internships, collaborations, and interesting problems.{" "}
-            <span className="text-white font-semibold">Let&apos;s build something great.</span>
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-            <a
-              href="mailto:gadebhar@msu.edu"
-              className="rounded-xl bg-cyan-400 px-8 py-4 text-sm font-bold text-black transition-all hover:bg-cyan-300 hover:shadow-[0_0_32px_rgba(34,211,238,0.45)] text-center"
-            >
-              gadebhar@msu.edu
-            </a>
+        <div className="flex flex-col gap-4 max-w-sm">
+          <a
+            href="mailto:gadebhar@msu.edu"
+            className="rounded-lg bg-cyan-400 px-6 py-3 text-sm font-semibold text-black hover:bg-cyan-300 transition-colors inline-block w-fit"
+          >
+            gadebhar@msu.edu
+          </a>
+          <div className="flex gap-3">
             <a
               href="https://www.linkedin.com/in/bharadwaj-gade/"
               target="_blank"
               rel="noreferrer"
-              className="rounded-xl border border-white/10 px-8 py-4 text-sm font-bold text-slate-300 transition-all hover:border-cyan-400/30 hover:text-cyan-400 hover:bg-cyan-400/5 text-center"
+              className="text-sm text-slate-400 hover:text-white transition-colors"
             >
               LinkedIn
             </a>
+            <span className="text-slate-600">·</span>
             <a
               href="https://github.com/bgade06"
               target="_blank"
               rel="noreferrer"
-              className="rounded-xl border border-white/10 px-8 py-4 text-sm font-bold text-slate-300 transition-all hover:border-white/25 hover:text-white hover:bg-white/5 text-center"
+              className="text-sm text-slate-400 hover:text-white transition-colors"
             >
               GitHub
             </a>
           </div>
         </div>
 
-        <p className="mt-12 text-xs text-slate-700 font-mono">
-          © {new Date().getFullYear()} Bharadwaj Gade — Built with Next.js + Tailwind CSS.
+        <p className="mt-16 text-xs text-slate-700">
+          © {new Date().getFullYear()} Bharadwaj Gade
         </p>
       </section>
     </main>
