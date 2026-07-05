@@ -194,14 +194,6 @@ export default function SolanaProject() {
         {/* Links */}
         <div className="pt-8 border-t border-white/10 flex gap-4">
           <a
-            href="https://github.com/bgade06"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-lg bg-cyan-400 px-6 py-2.5 text-sm font-semibold text-black hover:bg-cyan-300 transition-colors"
-          >
-            View Code →
-          </a>
-          <a
             href="/"
             className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-semibold hover:border-white/25 hover:bg-white/5 transition-colors"
           >

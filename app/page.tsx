@@ -152,7 +152,6 @@ const featuredProjects = [
       "Async worker architecture for ML pipelines",
       "Real-time WebSocket updates",
     ],
-    repo: "https://github.com/bgade06",
     link: "/projects/solana",
     color: "cyan",
   },
@@ -168,7 +167,7 @@ const featuredProjects = [
       "Sub-200ms geospatial queries",
       "70% cache hit rate with Redis",
     ],
-    repo: "https://thepicklenest.com/",
+    live: "https://www.picklenest.com",
     link: "/projects/pickle-nest",
     color: "emerald",
   },
@@ -184,7 +183,7 @@ const featuredProjects = [
       "Metered billing with Stripe",
       "External service orchestration",
     ],
-    repo: "https://github.com/bgade06",
+    live: "https://www.successsociety.co",
     link: "/projects/success-society",
     color: "violet",
   },
@@ -486,7 +485,7 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  {(p.link || p.repo) && (
+                  {(p.link || p.live) && (
                     <div className="flex md:flex-col gap-3 shrink-0">
                       {p.link && (
                         <a
@@ -496,14 +495,14 @@ export default function Home() {
                           Details →
                         </a>
                       )}
-                      {p.repo && (
+                      {p.live && (
                         <a
-                          href={p.repo}
+                          href={p.live}
                           target="_blank"
                           rel="noreferrer"
                           className="rounded-xl border border-white/8 px-5 py-2.5 text-sm font-semibold text-slate-300 transition-all hover:border-white/20 hover:text-white hover:bg-white/5 text-center"
                         >
-                          {p.link ? "Code" : "View →"}
+                          View Live →
                         </a>
                       )}
                     </div>
