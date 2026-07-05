@@ -1,6 +1,105 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  y = 20,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  y?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown ? "translateY(0)" : `translateY(${y}px)`,
+        transition: `opacity 700ms ease-out ${delay}ms, transform 700ms ease-out ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function CountUpStat({
+  target,
+  prefix = "",
+  suffix = "",
+  label,
+}: {
+  target: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
+  const [n, setN] = useState(0);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    const duration = 900;
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setN(Math.round(eased * target));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [started, target]);
+
+  return (
+    <div ref={ref}>
+      <div className="text-2xl font-bold text-white">{prefix}{n}{suffix}</div>
+      <div className="text-xs text-slate-400 mt-1">{label}</div>
+    </div>
+  );
+}
 
 const professionalExperience = [
   {
@@ -201,122 +300,102 @@ export default function Home() {
       {/* Hero */}
       <section className="relative z-10 mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-center px-6 py-8 md:py-12 lg:py-16">
         <div className="flex-1 flex flex-col justify-center">
-          <div className="max-w-3xl animate-in fade-in duration-1000 delay-100">
+          <div className="max-w-3xl">
             {/* Name and Title */}
-            <div className="mb-10">
+            <Reveal delay={0} className="mb-10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-2">
                 Bharadwaj Gade
               </h1>
               <p className="text-lg text-sky-400 font-medium mb-1">Backend Engineer</p>
               <p className="text-sm text-slate-500">Michigan State University</p>
-            </div>
+            </Reveal>
 
             {/* Value Prop */}
-            <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed mb-16">
-              I build distributed systems that scale. 49 production APIs. 500+ events per second. Sub-200ms query latency. PostgreSQL, FastAPI, Redis, AWS.
-            </p>
+            <Reveal delay={120}>
+              <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed mb-16">
+                I build distributed systems that scale. 49 production APIs. 500+ events per second. Sub-200ms query latency. PostgreSQL, FastAPI, Redis, AWS.
+              </p>
+            </Reveal>
 
             {/* Key Proof Points */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
-              <div>
-                <div className="text-2xl font-bold text-white">49</div>
-                <div className="text-xs text-slate-400 mt-1">Production APIs</div>
+            <Reveal delay={240}>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
+                <CountUpStat target={49} label="Production APIs" />
+                <CountUpStat target={22} label="Database Models" />
+                <CountUpStat target={500} suffix="+" label="Events/Second" />
+                <CountUpStat target={200} prefix="<" suffix="ms" label="Query Latency" />
+                <CountUpStat target={3} label="Shipped SaaS" />
+                <CountUpStat target={2} label="Years Production" />
               </div>
-              <div>
-                <div className="text-2xl font-bold text-white">22</div>
-                <div className="text-xs text-slate-400 mt-1">Database Models</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-white">500+</div>
-                <div className="text-xs text-slate-400 mt-1">Events/Second</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-white">&lt;200ms</div>
-                <div className="text-xs text-slate-400 mt-1">Query Latency</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-white">3</div>
-                <div className="text-xs text-slate-400 mt-1">Shipped SaaS</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-white">2</div>
-                <div className="text-xs text-slate-400 mt-1">Years Production</div>
-              </div>
-            </div>
+            </Reveal>
 
             {/* Systems Built */}
-            <div className="mb-12">
+            <Reveal delay={360} className="mb-12">
               <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Systems</p>
               <div className="flex flex-wrap gap-2">
                 {["Distributed Systems", "Real-time APIs", "Async Workers", "Geospatial Search", "Metered Billing", "Multi-tenant SaaS"].map((system) => (
-                  <span key={system} className="px-3 py-1 text-sm bg-white/5 border border-white/10 rounded-lg text-slate-300">
+                  <span key={system} className="px-3 py-1 text-sm bg-white/5 border border-white/10 rounded-lg text-slate-300 transition-colors hover:border-sky-400/40 hover:text-sky-300">
                     {system}
                   </span>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
             {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="#projects"
-                className="rounded-lg bg-sky-400 px-6 py-3 sm:py-2.5 text-sm font-semibold text-black hover:bg-sky-300 transition-colors text-center"
-              >
-                View Projects
-              </a>
-              <a
-                href="https://github.com/bgade06"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-lg border border-white/15 px-6 py-3 sm:py-2.5 text-sm font-semibold text-white hover:border-white/30 hover:bg-white/5 transition-colors text-center"
-              >
-                GitHub
-              </a>
-              <a
-                href="mailto:gadebhar@msu.edu"
-                className="rounded-lg border border-white/15 px-6 py-3 sm:py-2.5 text-sm font-semibold text-white hover:border-white/30 hover:bg-white/5 transition-colors text-center"
-              >
-                Contact
-              </a>
-            </div>
+            <Reveal delay={480}>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#projects"
+                  className="rounded-lg bg-sky-400 px-6 py-3 sm:py-2.5 text-sm font-semibold text-black transition-all hover:bg-sky-300 hover:scale-[1.02] text-center"
+                >
+                  View Projects
+                </a>
+                <a
+                  href="https://github.com/bgade06"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-lg border border-white/15 px-6 py-3 sm:py-2.5 text-sm font-semibold text-white transition-all hover:border-white/30 hover:bg-white/5 hover:scale-[1.02] text-center"
+                >
+                  GitHub
+                </a>
+              </div>
+            </Reveal>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="flex justify-center pt-8">
-          <div className="text-xs text-slate-500 font-mono tracking-wide">↓ scroll to see projects</div>
-        </div>
+        <div className="pt-8 text-xs text-slate-500 font-mono tracking-wide">↓ scroll to see projects</div>
       </section>
 
       {/* About */}
       <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
-        <div className="mb-10">
+        <Reveal className="mb-10">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Background</h2>
-        </div>
-        <div className="max-w-2xl">
+        </Reveal>
+        <Reveal delay={100} className="max-w-2xl">
           <p className="text-base text-slate-300 leading-relaxed mb-4">
             I shipped distributed systems, real-time APIs, and SaaS platforms while learning systems design through production code. I care about reliability, performance, and clean architecture.
           </p>
           <p className="text-sm text-slate-400 leading-relaxed">
             Focused on: database design, query optimization, async systems, cloud infrastructure, and building systems that scale without surprises.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Professional Experience */}
       <section id="experience" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
-        <div className="mb-10">
+        <Reveal className="mb-10">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Professional Experience</h2>
           <p className="text-slate-500 text-sm mt-2">Software engineering internships building production systems</p>
-        </div>
+        </Reveal>
 
         <div className="space-y-6">
-          {professionalExperience.map((exp) => {
+          {professionalExperience.map((exp, i) => {
             const a = accents[exp.color as AccentColor];
             return (
+              <Reveal key={exp.id} delay={i * 120}>
               <div
-                key={exp.id}
-                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-6 md:p-8 transition-all duration-300 hover:-translate-y-0.5 animate-in fade-in duration-700`}
+                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-6 md:p-8 transition-all duration-300 hover:-translate-y-0.5`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex-1 min-w-0">
@@ -356,6 +435,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              </Reveal>
             );
           })}
         </div>
@@ -363,18 +443,18 @@ export default function Home() {
 
       {/* Featured Projects */}
       <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
-        <div className="mb-10">
+        <Reveal className="mb-10">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Featured Projects</h2>
           <p className="text-slate-500 text-sm mt-2">Personal projects demonstrating backend engineering depth</p>
-        </div>
+        </Reveal>
 
         <div className="space-y-6">
-          {featuredProjects.map((p) => {
+          {featuredProjects.map((p, i) => {
             const a = accents[p.color as AccentColor];
             return (
+              <Reveal key={p.id} delay={i * 120}>
               <div
-                key={p.id}
-                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-6 md:p-8 transition-all duration-300 hover:-translate-y-0.5 animate-in fade-in duration-700`}
+                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-6 md:p-8 transition-all duration-300 hover:-translate-y-0.5`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex-1 min-w-0">
@@ -430,6 +510,7 @@ export default function Home() {
                   )}
                 </div>
               </div>
+              </Reveal>
             );
           })}
         </div>
@@ -437,45 +518,44 @@ export default function Home() {
 
       {/* Skills */}
       <section id="skills" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
-        <div className="mb-10">
+        <Reveal className="mb-10">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Stack</h2>
-        </div>
+        </Reveal>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {Object.entries(skills).map(([category, items]) => (
-            <div
-              key={category}
-              className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-white/15 transition-colors animate-in fade-in duration-700"
-            >
-              <h3 className="font-mono text-sm text-slate-400 mb-4">
-                <span className="text-sky-400">$ </span>
-                {category.toLowerCase().replace(/ & /g, "_").replace(/ /g, "_")}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {items.map((item) => (
-                  <span
-                    key={item}
-                    className="text-sm border border-white/10 bg-white/[0.02] text-slate-300 px-3 py-1.5 rounded-lg hover:border-sky-400/40 hover:text-sky-300 transition-colors cursor-default"
-                  >
-                    {item}
-                  </span>
-                ))}
+          {Object.entries(skills).map(([category, items], i) => (
+            <Reveal key={category} delay={i * 100}>
+              <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15">
+                <h3 className="font-mono text-sm text-slate-400 mb-4">
+                  <span className="text-sky-400">$ </span>
+                  {category.toLowerCase().replace(/ & /g, "_").replace(/ /g, "_")}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((item) => (
+                    <span
+                      key={item}
+                      className="text-sm border border-white/10 bg-white/[0.02] text-slate-300 px-3 py-1.5 rounded-lg hover:border-sky-400/40 hover:text-sky-300 transition-colors cursor-default"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* Contact */}
       <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
-        <div className="text-center mb-12">
+        <Reveal className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Get in Touch</h2>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col items-center gap-4 max-w-sm mx-auto">
+        <Reveal delay={100} className="flex flex-col items-center gap-4 max-w-sm mx-auto">
           <a
             href="mailto:gadebhar@msu.edu"
-            className="rounded-lg bg-sky-400 px-6 py-3 text-sm font-semibold text-black hover:bg-sky-300 transition-colors inline-block w-fit"
+            className="rounded-lg bg-sky-400 px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-sky-300 hover:scale-[1.02] inline-block w-fit"
           >
             gadebhar@msu.edu
           </a>
@@ -498,9 +578,9 @@ export default function Home() {
               GitHub
             </a>
           </div>
-        </div>
+        </Reveal>
 
-        <p className="mt-16 text-xs text-slate-700">
+        <p className="mt-16 text-xs text-slate-700 text-center">
           © {new Date().getFullYear()} Bharadwaj Gade
         </p>
       </section>
