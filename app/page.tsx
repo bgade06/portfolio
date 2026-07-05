@@ -305,14 +305,13 @@ export default function Home() {
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-2">
                 Hey, I&apos;m Bharadwaj.
               </h1>
-              <p className="text-lg text-sky-400 font-medium mb-1">I build backend systems that don&apos;t fall over.</p>
-              <p className="text-sm text-slate-500">Backend Engineer · Michigan State University</p>
+              <p className="text-lg text-sky-400 font-medium">I go to Michigan State and design systems that scale.</p>
             </Reveal>
 
             {/* Value Prop */}
             <Reveal delay={120}>
               <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed mb-16">
-                49 production APIs. 500+ events per second. Sub-200ms query latency. PostgreSQL, FastAPI, Redis, AWS.
+                PostgreSQL · FastAPI · Redis · AWS
               </p>
             </Reveal>
 
