@@ -104,7 +104,7 @@ function CountUpStat({
 const professionalExperience = [
   {
     id: "01",
-    company: "Emergtech AI",
+    company: "Emergtech Business Solutions Inc.",
     title: "Software Engineering Intern",
     subtitle: "Multi-tenant AI orchestration platform",
     status: "current",
@@ -121,7 +121,7 @@ const professionalExperience = [
   },
   {
     id: "02",
-    company: "Digeon AI",
+    company: "Digeon Technologies LLC",
     title: "Software Engineering Intern",
     subtitle: "Production backend microservices",
     status: "previous",
