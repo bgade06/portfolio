@@ -303,16 +303,16 @@ export default function Home() {
             {/* Name and Title */}
             <Reveal delay={0} className="mb-10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-2">
-                Bharadwaj Gade
+                Hey, I&apos;m Bharadwaj.
               </h1>
-              <p className="text-lg text-sky-400 font-medium mb-1">Backend Engineer</p>
-              <p className="text-sm text-slate-500">Michigan State University</p>
+              <p className="text-lg text-sky-400 font-medium mb-1">I build backend systems that don&apos;t fall over.</p>
+              <p className="text-sm text-slate-500">Backend Engineer · Michigan State University</p>
             </Reveal>
 
             {/* Value Prop */}
             <Reveal delay={120}>
               <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed mb-16">
-                I build distributed systems that scale. 49 production APIs. 500+ events per second. Sub-200ms query latency. PostgreSQL, FastAPI, Redis, AWS.
+                49 production APIs. 500+ events per second. Sub-200ms query latency. PostgreSQL, FastAPI, Redis, AWS.
               </p>
             </Reveal>
 
@@ -465,7 +465,6 @@ export default function Home() {
       <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
         <Reveal className="mb-10">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Featured Projects</h2>
-          <p className="text-slate-500 text-sm mt-2">Personal projects demonstrating backend engineering depth</p>
         </Reveal>
 
         <div className="space-y-6">
@@ -547,9 +546,9 @@ export default function Home() {
             <Reveal
               key={category}
               delay={i * 100}
-              className={i === arr.length - 1 && arr.length % 2 === 1 ? "md:col-span-2" : ""}
+              className={`h-full ${i === arr.length - 1 && arr.length % 2 === 1 ? "md:col-span-2" : ""}`}
             >
-              <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15">
+              <div className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15">
                 <h3 className="font-mono text-sm text-slate-400 mb-4">
                   <span className="text-sky-400">$ </span>
                   {category.toLowerCase().replace(/ & /g, "_").replace(/ /g, "_")}
