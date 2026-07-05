@@ -167,7 +167,7 @@ const featuredProjects = [
       "Sub-200ms geospatial queries",
       "70% cache hit rate with Redis",
     ],
-    live: "https://www.picklenest.com",
+    live: "https://www.thepicklenest.com",
     link: "/projects/pickle-nest",
     color: "emerald",
   },
