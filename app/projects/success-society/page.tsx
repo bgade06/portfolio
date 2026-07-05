@@ -2,17 +2,17 @@ export default function SuccessSocietyProject() {
   return (
     <>
       <div className="mb-12">
-        <a href="/" className="text-cyan-400 hover:text-cyan-300 text-sm font-mono mb-4 inline-block">
+        <a href="/" className="text-sky-400 hover:text-sky-300 text-sm font-mono mb-4 inline-block">
           ← Back
         </a>
-        <h1 className="text-4xl font-black tracking-tight mb-2">Success Society</h1>
-        <p className="text-slate-400">A case study in multi-tenant SaaS and payment orchestration</p>
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-2">Success Society</h1>
+        <p className="text-slate-400 text-sm md:text-base">A case study in multi-tenant SaaS and payment orchestration</p>
       </div>
 
       <div className="space-y-12">
         {/* Problem */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">The Problem</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">The Problem</h2>
           <div className="space-y-4 text-slate-300">
             <p className="leading-relaxed">
               SaaS requires coordination across multiple concerns: user authentication, subscription billing, metered usage tracking, generating actual value (leads), and notifying users. A single failure (Stripe doesn't confirm payment, Anthropic API times out, Discord notification fails) can leave the system in an inconsistent state.
@@ -28,7 +28,7 @@ export default function SuccessSocietyProject() {
 
         {/* Architecture */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Architecture & Design</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Architecture & Design</h2>
           <div className="space-y-4 text-slate-300">
             <p className="leading-relaxed">
               The system separates into layers: <strong>authentication</strong> (Supabase), <strong>data</strong> (Supabase PostgreSQL with RLS), <strong>business logic</strong> (lead generation), and <strong>external services</strong> (Stripe, Anthropic, Discord).
@@ -57,7 +57,7 @@ export default function SuccessSocietyProject() {
 
         {/* Technical Decisions */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Technical Decisions & Tradeoffs</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Technical Decisions & Tradeoffs</h2>
           <div className="space-y-5">
             <div className="border-l-2 border-violet-400/30 pl-4">
               <h3 className="font-semibold text-white mb-2">Supabase for auth and data</h3>
@@ -115,7 +115,7 @@ export default function SuccessSocietyProject() {
 
         {/* Challenges */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Challenges & Solutions</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Challenges & Solutions</h2>
           <div className="space-y-5">
             <div>
               <h3 className="font-semibold text-white mb-2">Metered billing reconciliation</h3>
@@ -150,7 +150,7 @@ export default function SuccessSocietyProject() {
             <div>
               <h3 className="font-semibold text-white mb-2">Handling Anthropic API timeouts</h3>
               <p className="text-slate-400 mb-2 text-sm">
-                Anthropic API sometimes takes >10 seconds. If the lead generation request times out, we've created a usage record but have no leads to show. Customer sees $0.10 charged with nothing to show for it.
+                Anthropic API sometimes takes &gt;10 seconds. If the lead generation request times out, we've created a usage record but have no leads to show. Customer sees $0.10 charged with nothing to show for it.
               </p>
               <p className="text-slate-300 text-sm">
                 <strong>Solution:</strong> Implement request-level retry with exponential backoff. Timeout after 30 seconds (generous). If API times out, retry up to 2 times. If all retries fail, charge is refunded (manually or automatically through Stripe). Users see transparent error messaging.
@@ -161,7 +161,7 @@ export default function SuccessSocietyProject() {
 
         {/* Results */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Performance & Outcomes</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Performance & Outcomes</h2>
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
@@ -200,13 +200,13 @@ export default function SuccessSocietyProject() {
             href="https://github.com/bgade06"
             target="_blank"
             rel="noreferrer"
-            className="rounded-lg bg-violet-400 px-6 py-2.5 text-sm font-bold text-black hover:bg-violet-300 transition-colors"
+            className="rounded-lg bg-violet-400 px-6 py-2.5 text-sm font-semibold text-black hover:bg-violet-300 transition-colors"
           >
             View Code →
           </a>
           <a
             href="/"
-            className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-bold hover:border-white/25 hover:bg-white/5 transition-colors"
+            className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-semibold hover:border-white/25 hover:bg-white/5 transition-colors"
           >
             Back to Projects
           </a>

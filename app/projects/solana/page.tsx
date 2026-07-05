@@ -2,17 +2,17 @@ export default function SolanaProject() {
   return (
     <>
       <div className="mb-12">
-        <a href="/" className="text-cyan-400 hover:text-cyan-300 text-sm font-mono mb-4 inline-block">
+        <a href="/" className="text-sky-400 hover:text-sky-300 text-sm font-mono mb-4 inline-block">
           ← Back
         </a>
-        <h1 className="text-4xl font-black tracking-tight mb-2">Solana Market Intelligence Platform</h1>
-        <p className="text-slate-400">A case study in real-time data ingestion and stream processing</p>
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-2">Solana Market Intelligence Platform</h1>
+        <p className="text-slate-400 text-sm md:text-base">A case study in real-time data ingestion and stream processing</p>
       </div>
 
       <div className="space-y-12">
         {/* Problem */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">The Problem</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">The Problem</h2>
           <div className="space-y-4 text-slate-300">
             <p className="leading-relaxed">
               Crypto markets move at millisecond scale. Traders need intelligence about price movements and wallet activity <em>as it happens</em>, not after the fact. The system had to ingest market data from multiple exchanges, run statistical analysis, and surface actionable signals with sub-100ms latency.
@@ -25,7 +25,7 @@ export default function SolanaProject() {
 
         {/* Architecture */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Architecture & Design</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Architecture & Design</h2>
           <div className="space-y-4 text-slate-300">
             <p className="leading-relaxed">
               The architecture separates concerns into three layers: <strong>ingestion</strong> (receive and store data), <strong>processing</strong> (compute signals), and <strong>serving</strong> (query results).
@@ -54,7 +54,7 @@ export default function SolanaProject() {
 
         {/* Technical Decisions */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Technical Decisions & Tradeoffs</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Technical Decisions & Tradeoffs</h2>
           <div className="space-y-5">
             <div className="border-l-2 border-cyan-400/30 pl-4">
               <h3 className="font-semibold text-white mb-2">Async/await over threading</h3>
@@ -112,7 +112,7 @@ export default function SolanaProject() {
 
         {/* Challenges Encountered */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Challenges & Solutions</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Challenges & Solutions</h2>
           <div className="space-y-5">
             <div>
               <h3 className="font-semibold text-white mb-2">Backpressure during market spikes</h3>
@@ -158,7 +158,7 @@ export default function SolanaProject() {
 
         {/* Key Metrics */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Performance & Outcomes</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Performance & Outcomes</h2>
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
@@ -197,13 +197,13 @@ export default function SolanaProject() {
             href="https://github.com/bgade06"
             target="_blank"
             rel="noreferrer"
-            className="rounded-lg bg-cyan-400 px-6 py-2.5 text-sm font-bold text-black hover:bg-cyan-300 transition-colors"
+            className="rounded-lg bg-cyan-400 px-6 py-2.5 text-sm font-semibold text-black hover:bg-cyan-300 transition-colors"
           >
             View Code →
           </a>
           <a
             href="/"
-            className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-bold hover:border-white/25 hover:bg-white/5 transition-colors"
+            className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-semibold hover:border-white/25 hover:bg-white/5 transition-colors"
           >
             Back to Projects
           </a>

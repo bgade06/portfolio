@@ -150,34 +150,19 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#050510] text-slate-200">
-      {/* Dot grid */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(0,212,255,0.06) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }}
-      />
-      {/* Ambient glow */}
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-40 left-[5%] h-[700px] w-[700px] rounded-full bg-cyan-500/[0.04] blur-[140px]" />
-        <div className="absolute top-[50%] right-[-5%] h-[500px] w-[500px] rounded-full bg-indigo-500/[0.04] blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[35%] h-[500px] w-[500px] rounded-full bg-violet-500/[0.04] blur-[130px]" />
-      </div>
 
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#050510]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="font-mono text-sm text-cyan-400 tracking-wider">
+      <header className="sticky top-0 z-50 border-b border-white/[0.05] bg-[#050510]/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 md:py-4">
+          <a href="/" className="font-mono text-sm text-sky-400 tracking-wider hover:text-sky-300 transition-colors">
             &gt; BG<span className="animate-blink">_</span>
-          </div>
-          <nav className="flex gap-7 text-sm font-mono">
+          </a>
+          <nav className="hidden md:flex gap-6 lg:gap-7 text-sm font-mono">
             {["about", "projects", "skills", "contact"].map((s) => (
               <a
                 key={s}
                 href={`#${s}`}
-                className="text-slate-500 hover:text-cyan-400 transition-colors"
+                className="text-slate-500 hover:text-sky-400 transition-colors"
               >
                 ./{s}
               </a>
@@ -187,47 +172,47 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-between px-6 py-16 md:py-20">
+      <section className="relative z-10 mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-center px-6 py-8 md:py-12 lg:py-16">
         <div className="flex-1 flex flex-col justify-center">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl animate-in fade-in duration-1000 delay-100">
             {/* Name and Title */}
-            <div className="mb-8">
-              <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-2">
+            <div className="mb-10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-2">
                 Bharadwaj Gade
               </h1>
-              <p className="text-xl text-cyan-400 font-semibold">Backend Engineer</p>
-              <p className="text-sm text-slate-500 mt-1">Michigan State University</p>
+              <p className="text-lg text-sky-400 font-medium mb-1">Backend Engineer</p>
+              <p className="text-sm text-slate-500">Michigan State University</p>
             </div>
 
             {/* Value Prop */}
-            <p className="text-lg text-slate-300 max-w-2xl leading-relaxed mb-12">
+            <p className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed mb-16">
               I build distributed systems that scale. 49 production APIs. 500+ events per second. Sub-200ms query latency. PostgreSQL, FastAPI, Redis, AWS.
             </p>
 
             {/* Key Proof Points */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
               <div>
-                <div className="text-2xl font-black text-white">49</div>
+                <div className="text-2xl font-bold text-white">49</div>
                 <div className="text-xs text-slate-400 mt-1">Production APIs</div>
               </div>
               <div>
-                <div className="text-2xl font-black text-white">22</div>
+                <div className="text-2xl font-bold text-white">22</div>
                 <div className="text-xs text-slate-400 mt-1">Database Models</div>
               </div>
               <div>
-                <div className="text-2xl font-black text-white">500+</div>
+                <div className="text-2xl font-bold text-white">500+</div>
                 <div className="text-xs text-slate-400 mt-1">Events/Second</div>
               </div>
               <div>
-                <div className="text-2xl font-black text-white">&lt;200ms</div>
+                <div className="text-2xl font-bold text-white">&lt;200ms</div>
                 <div className="text-xs text-slate-400 mt-1">Query Latency</div>
               </div>
               <div>
-                <div className="text-2xl font-black text-white">3</div>
+                <div className="text-2xl font-bold text-white">3</div>
                 <div className="text-xs text-slate-400 mt-1">Shipped SaaS</div>
               </div>
               <div>
-                <div className="text-2xl font-black text-white">2</div>
+                <div className="text-2xl font-bold text-white">2</div>
                 <div className="text-xs text-slate-400 mt-1">Years Production</div>
               </div>
             </div>
@@ -245,10 +230,10 @@ export default function Home() {
             </div>
 
             {/* CTA */}
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="#projects"
-                className="rounded-lg bg-cyan-400 px-6 py-3 text-sm font-semibold text-black hover:bg-cyan-300 transition-colors"
+                className="rounded-lg bg-sky-400 px-6 py-3 sm:py-2.5 text-sm font-semibold text-black hover:bg-sky-300 transition-colors text-center"
               >
                 View Projects
               </a>
@@ -256,13 +241,13 @@ export default function Home() {
                 href="https://github.com/bgade06"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:border-white/40 hover:bg-white/5 transition-colors"
+                className="rounded-lg border border-white/15 px-6 py-3 sm:py-2.5 text-sm font-semibold text-white hover:border-white/30 hover:bg-white/5 transition-colors text-center"
               >
                 GitHub
               </a>
               <a
                 href="mailto:gadebhar@msu.edu"
-                className="rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:border-white/40 hover:bg-white/5 transition-colors"
+                className="rounded-lg border border-white/15 px-6 py-3 sm:py-2.5 text-sm font-semibold text-white hover:border-white/30 hover:bg-white/5 transition-colors text-center"
               >
                 Contact
               </a>
@@ -277,40 +262,40 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Background</h2>
+      <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Background</h2>
         </div>
         <div className="max-w-2xl">
-          <p className="text-slate-300 leading-relaxed mb-4">
+          <p className="text-base text-slate-300 leading-relaxed mb-4">
             I shipped distributed systems, real-time APIs, and SaaS platforms while learning systems design through production code. I care about reliability, performance, and clean architecture.
           </p>
-          <p className="text-slate-400 leading-relaxed text-sm">
+          <p className="text-sm text-slate-400 leading-relaxed">
             Focused on: database design, query optimization, async systems, cloud infrastructure, and building systems that scale without surprises.
           </p>
         </div>
       </section>
 
       {/* Professional Experience */}
-      <section id="experience" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Professional Experience</h2>
+      <section id="experience" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Professional Experience</h2>
           <p className="text-slate-500 text-sm mt-2">Software engineering internships building production systems</p>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-6">
           {professionalExperience.map((exp) => {
             const a = accents[exp.color as AccentColor];
             return (
               <div
                 key={exp.id}
-                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-8 transition-all duration-300 hover:-translate-y-0.5`}
+                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-6 md:p-8 transition-all duration-300 hover:-translate-y-0.5 animate-in fade-in duration-700`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2 flex-wrap">
-                      <h3 className="text-2xl font-bold tracking-tight text-white">{exp.title}</h3>
-                      <span className={`text-sm font-semibold px-2.5 py-1 rounded-full ${
+                    <div className="flex items-center gap-3 mb-3 flex-wrap">
+                      <h3 className="text-xl font-semibold tracking-tight text-white">{exp.title}</h3>
+                      <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${
                         exp.status === 'current'
                           ? 'bg-green-500/10 text-green-400 border border-green-500/30'
                           : 'bg-slate-500/10 text-slate-400 border border-slate-500/30'
@@ -318,9 +303,9 @@ export default function Home() {
                         {exp.status === 'current' ? 'Current' : 'Previous'}
                       </span>
                     </div>
-                    <p className="text-lg text-cyan-400 font-semibold mb-1">{exp.company}</p>
-                    <p className={`font-mono text-xs ${a.num} opacity-70 mb-4`}>{exp.subtitle}</p>
-                    <p className="text-slate-300 leading-relaxed mb-5 max-w-2xl">{exp.desc}</p>
+                    <p className="text-base text-sky-400 font-medium mb-2">{exp.company}</p>
+                    <p className={`text-xs text-slate-500 mb-4`}>{exp.subtitle}</p>
+                    <p className="text-sm text-slate-300 leading-relaxed mb-5 max-w-2xl">{exp.desc}</p>
 
                     <div className="flex flex-wrap gap-2 mb-5">
                       {exp.tags.map((tag) => (
@@ -350,28 +335,28 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Featured Projects</h2>
+      <section id="projects" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Featured Projects</h2>
           <p className="text-slate-500 text-sm mt-2">Personal projects demonstrating backend engineering depth</p>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-6">
           {featuredProjects.map((p) => {
             const a = accents[p.color as AccentColor];
             return (
               <div
                 key={p.id}
-                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-8 transition-all duration-300 hover:-translate-y-0.5`}
+                className={`group rounded-2xl border ${a.border} bg-white/[0.02] p-6 md:p-8 transition-all duration-300 hover:-translate-y-0.5 animate-in fade-in duration-700`}
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
                       <span className={`font-mono text-xs ${a.num}`}>{p.id}</span>
-                      <h3 className="text-2xl font-bold tracking-tight">{p.title}</h3>
+                      <h3 className="text-xl font-semibold tracking-tight text-white">{p.title}</h3>
                     </div>
-                    <p className={`font-mono text-xs ${a.num} opacity-70 mb-4`}>{p.subtitle}</p>
-                    <p className="text-slate-300 leading-relaxed mb-5 max-w-2xl">{p.desc}</p>
+                    <p className={`text-xs text-slate-500 mb-4`}>{p.subtitle}</p>
+                    <p className="text-sm text-slate-300 leading-relaxed mb-5 max-w-2xl">{p.desc}</p>
 
                     <div className="flex flex-wrap gap-2 mb-5">
                       {p.tags.map((tag) => (
@@ -399,7 +384,7 @@ export default function Home() {
                       {p.link && (
                         <a
                           href={p.link}
-                          className={`rounded-xl px-5 py-2.5 text-sm font-bold transition-all text-center ${a.btn}`}
+                          className={`rounded-xl px-5 py-2.5 text-sm font-semibold transition-all text-center ${a.btn}`}
                         >
                           Details →
                         </a>
@@ -409,7 +394,7 @@ export default function Home() {
                           href={p.repo}
                           target="_blank"
                           rel="noreferrer"
-                          className="rounded-xl border border-white/10 px-5 py-2.5 text-sm font-bold text-slate-300 transition-all hover:border-white/25 hover:text-white hover:bg-white/5 text-center"
+                          className="rounded-xl border border-white/8 px-5 py-2.5 text-sm font-semibold text-slate-300 transition-all hover:border-white/20 hover:text-white hover:bg-white/5 text-center"
                         >
                           {p.link ? "Code" : "View →"}
                         </a>
@@ -424,26 +409,26 @@ export default function Home() {
       </section>
 
       {/* Skills */}
-      <section id="skills" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Stack</h2>
+      <section id="skills" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Stack</h2>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {Object.entries(skills).map(([category, items]) => (
             <div
               key={category}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-colors"
+              className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 hover:border-white/15 transition-colors animate-in fade-in duration-700"
             >
               <h3 className="font-mono text-sm text-slate-400 mb-4">
-                <span className="text-cyan-400">$ </span>
+                <span className="text-sky-400">$ </span>
                 {category.toLowerCase().replace(/ & /g, "_").replace(/ /g, "_")}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {items.map((item) => (
                   <span
                     key={item}
-                    className="text-sm border border-white/10 bg-white/[0.03] text-slate-200 px-3 py-1.5 rounded-lg hover:border-cyan-400/30 hover:text-cyan-300 transition-colors cursor-default"
+                    className="text-sm border border-white/10 bg-white/[0.02] text-slate-300 px-3 py-1.5 rounded-lg hover:border-sky-400/40 hover:text-sky-300 transition-colors cursor-default"
                   >
                     {item}
                   </span>
@@ -455,15 +440,15 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-white">Get in Touch</h2>
+      <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Get in Touch</h2>
         </div>
 
         <div className="flex flex-col gap-4 max-w-sm">
           <a
             href="mailto:gadebhar@msu.edu"
-            className="rounded-lg bg-cyan-400 px-6 py-3 text-sm font-semibold text-black hover:bg-cyan-300 transition-colors inline-block w-fit"
+            className="rounded-lg bg-sky-400 px-6 py-3 text-sm font-semibold text-black hover:bg-sky-300 transition-colors inline-block w-fit"
           >
             gadebhar@msu.edu
           </a>

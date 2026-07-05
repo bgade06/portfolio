@@ -2,17 +2,17 @@ export default function InternshipProject() {
   return (
     <>
       <div className="mb-12">
-        <a href="/" className="text-cyan-400 hover:text-cyan-300 text-sm font-mono mb-4 inline-block">
+        <a href="/" className="text-sky-400 hover:text-sky-300 text-sm font-mono mb-4 inline-block">
           ← Back
         </a>
-        <h1 className="text-4xl font-black tracking-tight mb-2">Backend Internship</h1>
-        <p className="text-slate-400">A case study in production engineering at scale</p>
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-2">Backend Internship</h1>
+        <p className="text-slate-400 text-sm md:text-base">A case study in production engineering at scale</p>
       </div>
 
       <div className="space-y-12">
         {/* Problem */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">The Problem</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">The Problem</h2>
           <div className="space-y-4 text-slate-300">
             <p className="leading-relaxed">
               The company runs multiple services (billing, user management, content, analytics). Each service has its own database, deployment pipeline, and team responsible for it. The challenge: how do you maintain reliability when changes to one service can affect others? How do you deploy without downtime? How do you handle database migrations at scale?
@@ -28,7 +28,7 @@ export default function InternshipProject() {
 
         {/* Architecture */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">System Architecture & Deployment</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">System Architecture & Deployment</h2>
           <div className="space-y-4 text-slate-300">
             <p className="leading-relaxed">
               6 Flask microservices. Each runs on its own AWS EC2 instance. Each has its own PostgreSQL database (separate RDS instance). Services communicate synchronously via HTTP (no message queues yet—simpler, but tighter coupling).
@@ -57,7 +57,7 @@ export default function InternshipProject() {
 
         {/* Technical Decisions */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Technical Decisions & Tradeoffs</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Technical Decisions & Tradeoffs</h2>
           <div className="space-y-5">
             <div className="border-l-2 border-indigo-400/30 pl-4">
               <h3 className="font-semibold text-white mb-2">Microservices over monolith</h3>
@@ -115,7 +115,7 @@ export default function InternshipProject() {
 
         {/* Challenges */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Challenges & Learning</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Challenges & Learning</h2>
           <div className="space-y-5">
             <div>
               <h3 className="font-semibold text-white mb-2">Debugging production issues</h3>
@@ -161,7 +161,7 @@ export default function InternshipProject() {
 
         {/* What I Learned */}
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">Key Learning & Outcomes</h2>
+          <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4 text-white">Key Learning & Outcomes</h2>
           <div className="space-y-6">
             <div className="bg-white/5 border border-white/10 rounded-lg p-4">
               <p className="text-sm text-slate-300 mb-4">
@@ -200,7 +200,7 @@ export default function InternshipProject() {
         <div className="pt-8 border-t border-white/10 flex gap-4">
           <a
             href="/"
-            className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-bold hover:border-white/25 hover:bg-white/5 transition-colors"
+            className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-semibold hover:border-white/25 hover:bg-white/5 transition-colors"
           >
             Back to Projects
           </a>
