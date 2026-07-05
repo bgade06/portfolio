@@ -298,7 +298,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative z-10 mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-center px-6 py-8 md:py-12 lg:py-16">
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex-1 flex flex-col lg:flex-row lg:items-center justify-center gap-10">
           <div className="max-w-3xl">
             {/* Name and Title */}
             <Reveal delay={0} className="mb-10">
@@ -360,6 +360,27 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
+
+          {/* Terminal panel */}
+          <Reveal delay={300} className="hidden lg:block shrink-0">
+            <div className="w-[380px] rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden shadow-2xl shadow-black/40">
+              <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/10">
+                <span className="h-3 w-3 rounded-full bg-red-500/50" />
+                <span className="h-3 w-3 rounded-full bg-yellow-500/50" />
+                <span className="h-3 w-3 rounded-full bg-green-500/50" />
+                <span className="ml-2 text-xs text-slate-500 font-mono">whoami.sh</span>
+              </div>
+              <div className="p-5 font-mono text-[13px] leading-relaxed">
+                <p><span className="text-emerald-400">$</span> <span className="text-slate-300">whoami</span></p>
+                <p className="text-slate-500 pl-4 mb-3">bharadwaj_gade — backend engineer</p>
+                <p><span className="text-emerald-400">$</span> <span className="text-slate-300">cat stack.txt</span></p>
+                <p className="text-slate-500 pl-4 mb-3">PostgreSQL, FastAPI, Redis, AWS</p>
+                <p><span className="text-emerald-400">$</span> <span className="text-slate-300">./deploy --env=production</span></p>
+                <p className="text-sky-400 pl-4 mb-3">✓ 49 endpoints live, 0 downtime</p>
+                <p><span className="text-emerald-400">$</span> <span className="text-slate-300 animate-blink">_</span></p>
+              </div>
+            </div>
+          </Reveal>
         </div>
 
         {/* Scroll indicator */}
@@ -522,8 +543,12 @@ export default function Home() {
         </Reveal>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {Object.entries(skills).map(([category, items], i) => (
-            <Reveal key={category} delay={i * 100}>
+          {Object.entries(skills).map(([category, items], i, arr) => (
+            <Reveal
+              key={category}
+              delay={i * 100}
+              className={i === arr.length - 1 && arr.length % 2 === 1 ? "md:col-span-2" : ""}
+            >
               <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/15">
                 <h3 className="font-mono text-sm text-slate-400 mb-4">
                   <span className="text-sky-400">$ </span>

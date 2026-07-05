@@ -190,16 +190,6 @@ export default function SolanaProject() {
             </div>
           </div>
         </section>
-
-        {/* Links */}
-        <div className="pt-8 border-t border-white/10 flex gap-4">
-          <a
-            href="/"
-            className="rounded-lg border border-white/10 px-6 py-2.5 text-sm font-semibold hover:border-white/25 hover:bg-white/5 transition-colors"
-          >
-            Back to Projects
-          </a>
-        </div>
       </div>
     </>
   );
