@@ -256,8 +256,8 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="flex justify-center">
-          <div className="text-xs text-slate-600 font-mono">↓ scroll to see projects</div>
+        <div className="flex justify-center pt-8">
+          <div className="text-xs text-slate-500 font-mono tracking-wide">↓ scroll to see projects</div>
         </div>
       </section>
 
@@ -441,11 +441,11 @@ export default function Home() {
 
       {/* Contact */}
       <section id="contact" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
-        <div className="mb-10">
+        <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Get in Touch</h2>
         </div>
 
-        <div className="flex flex-col gap-4 max-w-sm">
+        <div className="flex flex-col items-center gap-4 max-w-sm mx-auto">
           <a
             href="mailto:gadebhar@msu.edu"
             className="rounded-lg bg-sky-400 px-6 py-3 text-sm font-semibold text-black hover:bg-sky-300 transition-colors inline-block w-fit"
