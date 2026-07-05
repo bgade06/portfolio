@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 const professionalExperience = [
   {
     id: "01",
@@ -147,6 +149,7 @@ const accents: Record<AccentColor, {
 };
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-[#050510] text-slate-200">
@@ -168,7 +171,31 @@ export default function Home() {
               </a>
             ))}
           </nav>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span className={`block h-0.5 w-5 bg-slate-300 transition-transform ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-slate-300 transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-slate-300 transition-transform ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+          </button>
         </div>
+        {menuOpen && (
+          <nav className="md:hidden flex flex-col border-t border-white/[0.05] bg-[#050510]/95 text-sm font-mono">
+            {["about", "projects", "skills", "contact"].map((s) => (
+              <a
+                key={s}
+                href={`#${s}`}
+                onClick={() => setMenuOpen(false)}
+                className="px-6 py-3 text-slate-400 hover:text-sky-400 hover:bg-white/5 transition-colors border-b border-white/[0.03] last:border-b-0"
+              >
+                ./{s}
+              </a>
+            ))}
+          </nav>
+        )}
       </header>
 
       {/* Hero */}
