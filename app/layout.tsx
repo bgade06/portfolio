@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bharadwaj Gade — Software Engineer & Security Researcher",
+  title: "Bharadwaj Gade | Software Engineer",
   description:
-    "CS student at Michigan State University building secure, scalable systems. Full-stack developer and cybersecurity researcher.",
+    "CS student at Michigan State University building backend systems, multi-tenant SaaS, and AI integrations.",
 };
 
 export default function RootLayout({

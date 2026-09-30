@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 function Reveal({
@@ -104,36 +105,69 @@ function CountUpStat({
 const professionalExperience = [
   {
     id: "01",
+    company: "Morsby, Gorman, McCarthy LLC · Project Guardian",
+    title: "Engineering Research and Systems Analyst Intern",
+    subtitle: "Remote",
+    dates: "July 2026 – Present",
+    status: "current",
+    desc: "Building Tableau dashboards and data workflows that analyze digital connectivity in Kenya, turning multi-source infrastructure and survey data into traceable metrics and decision-oriented visualizations.",
+    tags: ["Tableau", "Data Pipelines", "Data Validation", "Analytics"],
+    highlights: [
+      "Analytics across 10 Kenyan counties",
+      "Source validation and calculation checks",
+      "Reproducible transformation logs",
+      "Scored 94/100 on the technical assessment",
+    ],
+    color: "emerald",
+  },
+  {
+    id: "02",
     company: "Emergtech Business Solutions Inc.",
     title: "Software Engineering Intern",
-    subtitle: "Multi-tenant AI orchestration platform",
-    status: "current",
-    desc: "Built backend systems for a multi-tenant SaaS platform that orchestrates AI workflows. Designed and implemented REST APIs, managed database schema evolution, and collaborated with the team through production pull requests and code reviews. Worked on features involving OAuth, third-party API integration (Jira), and AI model coordination.",
-    tags: ["Node.js", "Express.js", "MongoDB", "AWS Bedrock", "OAuth", "REST APIs", "SaaS Architecture"],
+    subtitle: "Farmington Hills, MI",
+    dates: "June 2026 – Sept. 2026",
+    status: "previous",
+    desc: "Built backend systems for a multi-tenant SaaS platform with tenant-isolated workspaces. Wrote AI orchestration services on AWS Bedrock that turn user discussions into structured action items, with cached inference and token tracking to cut redundant LLM calls.",
+    tags: ["Node.js", "Express.js", "MongoDB", "AWS Bedrock", "OAuth", "Jira API", "Webhooks"],
     highlights: [
-      "Multi-tenant backend architecture",
-      "REST API design and implementation",
-      "OAuth integration for third-party apps",
-      "AI orchestration and workflow management",
-      "Production code review and collaboration",
+      "12 organization-scoped REST APIs",
+      "MongoDB models for multi-tenant data",
+      "AI orchestration with AWS Bedrock",
+      "15+ integrations (OAuth, Jira, webhooks)",
     ],
     color: "cyan",
   },
   {
-    id: "02",
+    id: "03",
+    company: "Trustworthy and Reliable Technology (TART) Lab",
+    title: "Undergraduate Researcher",
+    subtitle: "Michigan State University · East Lansing, MI",
+    dates: "Aug. 2025 – Mar. 2026",
+    status: "previous",
+    desc: "Profiled CPU, memory, and cache behavior of C and Rust programs to find and remove bottlenecks. Designed energy-use experiments on refactored computing models to evaluate performance and energy tradeoffs.",
+    tags: ["C", "Rust", "Profiling", "Systems Performance"],
+    highlights: [
+      "~18% faster execution on benchmarks",
+      "CPU, memory, and cache profiling",
+      "Energy-use experiment design",
+      "Performance vs. energy tradeoff analysis",
+    ],
+    color: "violet",
+  },
+  {
+    id: "04",
     company: "Digeon Technologies LLC",
     title: "Software Engineering Intern",
-    subtitle: "Production backend microservices",
+    subtitle: "Canton, MI",
+    dates: "June 2025 – Dec. 2025",
     status: "previous",
-    desc: "Developed and maintained Flask microservices in a production environment. Worked across multiple services handling billing, user management, and content delivery. Designed database schemas, implemented REST APIs, managed Docker containerization, and participated in cloud infrastructure decisions on AWS. Gained hands-on experience with payment processing, CI/CD pipelines, and production deployments.",
-    tags: ["Flask", "Python", "Docker", "Docker Compose", "MySQL", "AWS EC2", "AWS RDS", "Stripe", "REST APIs"],
+    desc: "Engineered an AI marketplace with Flask, React, SQLAlchemy, and MySQL on a 5-service microservices architecture covering authentication, payments, search, and 200+ AI agents. Containerized the services and deployed them on AWS.",
+    tags: ["Flask", "React", "SQLAlchemy", "MySQL", "Docker Compose", "AWS EC2", "AWS RDS", "Stripe"],
     highlights: [
-      "Flask microservices across multiple domains",
-      "Payment processing with Stripe",
-      "Database schema design and migrations",
-      "Docker containerization and deployment",
-      "AWS infrastructure (EC2, RDS)",
-      "Production debugging and monitoring",
+      "5-service microservices architecture",
+      "Marketplace for 200+ AI agents",
+      "Stripe payments integration",
+      "Centralized logging and monitoring",
     ],
     color: "indigo",
   },
@@ -142,46 +176,46 @@ const professionalExperience = [
 const featuredProjects = [
   {
     id: "01",
-    title: "Solana Market Intelligence Platform",
-    subtitle: "Real-time data ingestion and stream processing",
-    desc: "Built a distributed backend that processes market data and generates trading signals. The system handles WebSocket feeds in real-time, runs ML pipelines asynchronously, and serves an API for paper trading. Designed around low latency and high throughput to handle hundreds of messages per second.",
-    tags: ["FastAPI", "PostgreSQL", "Redis", "SQLAlchemy", "WebSockets", "Async", "Docker"],
-    highlights: [
-      "500+ events per second ingestion",
-      "P95 API latency: 45ms",
-      "Async worker architecture for ML pipelines",
-      "Real-time WebSocket updates",
-    ],
-    link: "/projects/solana",
-    color: "cyan",
-  },
-  {
-    id: "02",
     title: "The Pickle Nest",
-    subtitle: "Geospatial search and complex data relationships",
-    desc: "Engineered the backend for a platform that helps users discover nearby games through intelligent matching. The system handles geospatial queries at scale, manages 22 related database models, and exposes 49 REST APIs. Built with production-grade architecture including PostGIS indexing and strategic caching.",
-    tags: ["PostgreSQL", "Prisma", "PostGIS", "Redis", "REST APIs", "Production"],
+    subtitle: "Next.js, TypeScript, PostgreSQL, Prisma, REST APIs",
+    desc: "A full-stack platform for finding pickleball venues and games, with bookings, messaging, and authenticated community workflows. Includes a geospatial pipeline built on the Google Places API, PostgreSQL, and browser geolocation that covers all 50 states.",
+    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Google Places API", "REST APIs"],
     highlights: [
-      "49 production APIs with clear semantics",
-      "22 normalized database models",
-      "Sub-200ms geospatial queries",
-      "70% cache hit rate with Redis",
+      "49 REST API endpoints",
+      "22-model relational database",
+      "Coverage across all 50 states",
+      "Up to 3,000 venue candidates per seeding cycle",
     ],
     live: "https://www.thepicklenest.com",
     link: "/projects/pickle-nest",
     color: "emerald",
   },
   {
+    id: "02",
+    title: "Solana Intelligence Engine",
+    subtitle: "Python, FastAPI, PostgreSQL, Redis, WebSockets, Docker",
+    desc: "A real-time backend that ingests, normalizes, and streams blockchain events. Asynchronous pipelines compute predictive signals over rolling time windows, and the whole backend is containerized and covered by an automated test suite.",
+    tags: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Redis", "WebSockets", "Async", "Docker"],
+    highlights: [
+      "15+ predictive signals",
+      "Five rolling time windows",
+      "Real-time WebSocket streaming",
+      "100+ automated tests",
+    ],
+    link: "/projects/solana",
+    color: "cyan",
+  },
+  {
     id: "03",
     title: "Success Society",
-    subtitle: "Multi-tenant SaaS with payment orchestration",
-    desc: "Built a multi-tenant SaaS platform that coordinates multiple external services (Stripe, Anthropic, Discord) for lead generation and subscription management. Implemented metered billing, row-level security for data isolation, and saga patterns for reliable service orchestration.",
-    tags: ["Next.js", "Supabase", "Stripe", "Anthropic", "PostgreSQL", "SaaS Architecture"],
+    subtitle: "Next.js, TypeScript, Supabase, Stripe, AI",
+    desc: "A full-stack platform for an entrepreneur community with authentication, subscription billing, event management, and role-based dashboards. Event-driven workflows tie together Stripe, Supabase, and Discord, and an AI pipeline automates business discovery, qualification, and outreach.",
+    tags: ["Next.js", "TypeScript", "Supabase", "Stripe", "Discord API", "AI/LLMs"],
     highlights: [
-      "Zero billing reconciliation errors",
-      "100% multi-tenant data isolation via RLS",
-      "Metered billing with Stripe",
-      "External service orchestration",
+      "160+ members on the platform",
+      "Subscription billing with Stripe",
+      "Role-based dashboards",
+      "AI pipeline for lead discovery and outreach",
     ],
     live: "https://www.successsociety.co",
     link: "/projects/success-society",
@@ -190,11 +224,10 @@ const featuredProjects = [
 ];
 
 const skills: Record<string, string[]> = {
-  "Backend & APIs": ["FastAPI", "Flask", "Node.js", "PostgreSQL", "Redis", "SQLAlchemy", "Prisma"],
-  "Databases": ["PostgreSQL", "Supabase", "Schema Design", "Geospatial (PostGIS)", "Indexing", "Query Optimization"],
-  "Async & Concurrency": ["WebSockets", "Async/Await", "Background Jobs", "Event Streaming", "Real-time Systems"],
-  "Cloud": ["AWS EC2", "AWS RDS", "Docker", "Linux", "Monitoring"],
-  "Languages": ["Python", "TypeScript", "SQL", "Stripe API", "Discord API", "Anthropic API"],
+  "Languages": ["Python", "C/C++", "Java", "Rust", "TypeScript", "JavaScript", "SQL", "HTML/CSS"],
+  "Backend & Data": ["FastAPI", "Flask", "Node.js", "Express.js", "PostgreSQL", "MySQL", "MongoDB", "Redis", "Prisma", "SQLAlchemy", "REST APIs", "WebSockets"],
+  "Cloud & Tools": ["AWS", "Bedrock", "EC2", "RDS", "Docker", "Git", "Linux/Unix", "Tableau", "Supabase"],
+  "Technologies": ["Next.js", "React.js", "OAuth", "Stripe", "Pandas", "Microservices", "Distributed Systems", "Database Design", "System Design", "AI/LLMs"],
 };
 
 type AccentColor = "cyan" | "indigo" | "violet" | "emerald";
@@ -259,7 +292,7 @@ export default function Home() {
             &gt; BG<span className="animate-blink">_</span>
           </a>
           <nav className="hidden md:flex gap-6 lg:gap-7 text-sm font-mono">
-            {["about", "projects", "skills", "contact"].map((s) => (
+            {["about", "experience", "projects", "skills", "contact"].map((s) => (
               <a
                 key={s}
                 href={`#${s}`}
@@ -282,7 +315,7 @@ export default function Home() {
         </div>
         {menuOpen && (
           <nav className="md:hidden flex flex-col border-t border-white/[0.05] bg-[#050510]/95 text-sm font-mono">
-            {["about", "projects", "skills", "contact"].map((s) => (
+            {["about", "experience", "projects", "skills", "contact"].map((s) => (
               <a
                 key={s}
                 href={`#${s}`}
@@ -302,6 +335,14 @@ export default function Home() {
           <div className="max-w-3xl">
             {/* Name and Title */}
             <Reveal delay={0} className="mb-10">
+              <Image
+                src="/headshot.webp"
+                alt="Bharadwaj Gade"
+                width={96}
+                height={96}
+                priority
+                className="lg:hidden mb-6 h-24 w-24 rounded-full object-cover border border-white/10"
+              />
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-2">
                 Hey, I&apos;m Bharadwaj.
               </h1>
@@ -311,12 +352,12 @@ export default function Home() {
             {/* Key Proof Points */}
             <Reveal delay={240}>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16">
-                <CountUpStat target={49} label="Production APIs" />
-                <CountUpStat target={22} label="Database Models" />
-                <CountUpStat target={500} suffix="+" label="Events/Second" />
-                <CountUpStat target={200} prefix="<" suffix="ms" label="Query Latency" />
-                <CountUpStat target={3} label="Shipped SaaS" />
-                <CountUpStat target={2} label="Years Production" />
+                <CountUpStat target={4} label="Internships & Research" />
+                <CountUpStat target={49} label="REST Endpoints Shipped" />
+                <CountUpStat target={160} suffix="+" label="Platform Members" />
+                <CountUpStat target={15} suffix="+" label="API Integrations" />
+                <CountUpStat target={100} suffix="+" label="Automated Tests" />
+                <CountUpStat target={18} suffix="%" label="Runtime Reduction" />
               </div>
             </Reveal>
 
@@ -324,7 +365,7 @@ export default function Home() {
             <Reveal delay={360} className="mb-12">
               <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Systems</p>
               <div className="flex flex-wrap gap-2">
-                {["Distributed Systems", "Real-time APIs", "Async Workers", "Geospatial Search", "Metered Billing", "Multi-tenant SaaS"].map((system) => (
+                {["Multi-tenant SaaS", "AI Orchestration", "Microservices", "Real-time APIs", "Geospatial Search", "Systems Performance"].map((system) => (
                   <span key={system} className="px-3 py-1 text-sm bg-white/5 border border-white/10 rounded-lg text-slate-300 transition-colors hover:border-sky-400/40 hover:text-sky-300">
                     {system}
                   </span>
@@ -340,6 +381,14 @@ export default function Home() {
                   className="rounded-lg bg-sky-400 px-6 py-3 sm:py-2.5 text-sm font-semibold text-black transition-all hover:bg-sky-300 hover:scale-[1.02] text-center"
                 >
                   View Projects
+                </a>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-lg border border-white/15 px-6 py-3 sm:py-2.5 text-sm font-semibold text-white transition-all hover:border-white/30 hover:bg-white/5 hover:scale-[1.02] text-center"
+                >
+                  Resume
                 </a>
                 <a
                   href="https://github.com/bgade06"
@@ -362,11 +411,19 @@ export default function Home() {
                 <span className="h-3 w-3 rounded-full bg-green-500/50" />
                 <span className="ml-2 text-xs text-slate-500 font-mono">whoami.sh</span>
               </div>
+              <Image
+                src="/headshot.webp"
+                alt="Bharadwaj Gade"
+                width={380}
+                height={300}
+                priority
+                className="w-full h-[300px] object-cover object-[center_30%] border-b border-white/10"
+              />
               <div className="p-5 font-mono text-[13px] leading-relaxed">
                 <p><span className="text-emerald-400">$</span> <span className="text-slate-300">whoami</span></p>
                 <p className="text-slate-500 pl-4 mb-3">bharadwaj_gade — backend engineer</p>
                 <p><span className="text-emerald-400">$</span> <span className="text-slate-300">cat stack.txt</span></p>
-                <p className="text-slate-500 pl-4 mb-3">PostgreSQL, FastAPI, Redis, AWS</p>
+                <p className="text-slate-500 pl-4 mb-3">Python, TypeScript, PostgreSQL, AWS</p>
                 <p><span className="text-emerald-400">$</span> <span className="text-slate-300">./deploy --env=production</span></p>
                 <p className="text-sky-400 pl-4 mb-3">✓ 49 endpoints live, 0 downtime</p>
                 <p><span className="text-emerald-400">$</span> <span className="text-slate-300 animate-blink">_</span></p>
@@ -386,19 +443,46 @@ export default function Home() {
         </Reveal>
         <Reveal delay={100} className="max-w-2xl">
           <p className="text-base text-slate-300 leading-relaxed mb-4">
-            I shipped distributed systems, real-time APIs, and SaaS platforms while learning systems design through production code. I care about reliability, performance, and clean architecture.
+            I&apos;m a Computer Science student at Michigan State University. I&apos;ve spent the last two years building backend systems at internships, doing systems performance research in the TART Lab, and shipping my own full-stack platforms. I care about reliability, performance, and clean architecture.
           </p>
           <p className="text-sm text-slate-400 leading-relaxed">
-            Focused on: database design, query optimization, async systems, cloud infrastructure, and building systems that scale without surprises.
+            Focused on: backend and API design, multi-tenant SaaS, AI integrations, database design, and systems that scale without surprises.
           </p>
         </Reveal>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <Reveal delay={200} className="h-full">
+            <div className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-6">
+              <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Education</p>
+              <h3 className="text-lg font-semibold text-white">Michigan State University</h3>
+              <p className="text-sm text-sky-400 mb-1">B.S. in Computer Science</p>
+              <p className="text-xs text-slate-500 mb-4">East Lansing, MI · Expected May 2028</p>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Coursework: Software Engineering I, Information Management &amp; the Cloud, Discrete Structures, Computer Organization &amp; Architecture, Computer Systems, Algorithms &amp; Data Structures, Matrix Algebra
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={300} className="h-full">
+            <div className="h-full rounded-2xl border border-white/8 bg-white/[0.02] p-6">
+              <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Awards &amp; Certifications</p>
+              <ul className="space-y-2">
+                {["Eagle Scout", "MSU Cybersecurity Bootcamp"].map((award) => (
+                  <li key={award} className="flex items-center gap-2 text-sm text-slate-300">
+                    <span className="text-sky-400 text-xs shrink-0">▸</span>
+                    {award}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* Professional Experience */}
       <section id="experience" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
         <Reveal className="mb-10">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Professional Experience</h2>
-          <p className="text-slate-500 text-sm mt-2">Software engineering internships building production systems</p>
+          <p className="text-slate-500 text-sm mt-2">Internships and research</p>
         </Reveal>
 
         <div className="space-y-6">
@@ -413,14 +497,13 @@ export default function Home() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-3 flex-wrap">
                       <h3 className="text-xl font-semibold tracking-tight text-white">{exp.title}</h3>
-                      <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${
-                        exp.status === 'current'
-                          ? 'bg-green-500/10 text-green-400 border border-green-500/30'
-                          : 'bg-slate-500/10 text-slate-400 border border-slate-500/30'
-                      }`}>
-                        {exp.status === 'current' ? 'Current' : 'Previous'}
-                      </span>
+                      {exp.status === 'current' && (
+                        <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/30">
+                          Current
+                        </span>
+                      )}
                     </div>
+                    <p className="font-mono text-xs text-slate-500 mb-2">{exp.dates}</p>
                     <p className="text-base text-sky-400 font-medium mb-2">{exp.company}</p>
                     <p className={`text-xs text-slate-500 mb-4`}>{exp.subtitle}</p>
                     <p className="text-sm text-slate-300 leading-relaxed mb-5 max-w-2xl">{exp.desc}</p>
