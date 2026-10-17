@@ -138,23 +138,6 @@ const professionalExperience = [
     color: "cyan",
   },
   {
-    id: "03",
-    company: "Trustworthy and Reliable Technology (TART) Lab",
-    title: "Undergraduate Researcher",
-    subtitle: "Michigan State University · East Lansing, MI",
-    dates: "Aug. 2025 – Mar. 2026",
-    status: "previous",
-    desc: "Profiled CPU, memory, and cache behavior of C and Rust programs to find and remove bottlenecks. Designed energy-use experiments on refactored computing models to evaluate performance and energy tradeoffs.",
-    tags: ["C", "Rust", "Profiling", "Systems Performance"],
-    highlights: [
-      "~18% faster execution on benchmarks",
-      "CPU, memory, and cache profiling",
-      "Energy-use experiment design",
-      "Performance vs. energy tradeoff analysis",
-    ],
-    color: "violet",
-  },
-  {
     id: "04",
     company: "Digeon Technologies LLC",
     title: "Software Engineering Intern",
@@ -443,7 +426,7 @@ export default function Home() {
         </Reveal>
         <Reveal delay={100} className="max-w-2xl">
           <p className="text-base text-slate-300 leading-relaxed mb-4">
-            I&apos;m a Computer Science student at Michigan State University. I&apos;ve spent the last two years building backend systems at internships, doing systems performance research in the TART Lab, and shipping my own full-stack platforms. I care about reliability, performance, and clean architecture.
+            I&apos;m a Computer Science student at Michigan State University. I&apos;ve spent the last two years building backend systems at internships and shipping my own full-stack platforms. I care about reliability, performance, and clean architecture.
           </p>
           <p className="text-sm text-slate-400 leading-relaxed">
             Focused on: backend and API design, multi-tenant SaaS, AI integrations, database design, and systems that scale without surprises.
@@ -482,7 +465,7 @@ export default function Home() {
       <section id="experience" className="relative z-10 mx-auto max-w-6xl px-6 py-12 md:py-16 lg:py-24">
         <Reveal className="mb-10">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">Professional Experience</h2>
-          <p className="text-slate-500 text-sm mt-2">Internships and research</p>
+          <p className="text-slate-500 text-sm mt-2">Software engineering internships</p>
         </Reveal>
 
         <div className="space-y-6">
