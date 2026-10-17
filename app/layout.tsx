@@ -13,9 +13,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bharadwaj Gade | Software Engineer",
+  metadataBase: new URL("https://bharadwajgade.com"),
+  title: "Bharadwaj Gade | Backend & AI Engineer",
   description:
-    "CS student at Michigan State University building backend systems, multi-tenant SaaS, and AI integrations.",
+    "Backend and AI engineer building reliable AI pipelines, real-time data systems, and production SaaS.",
+  openGraph: {
+    title: "Bharadwaj Gade | Backend & AI Engineer",
+    description: "Reliable AI pipelines, real-time data systems, and production SaaS.",
+    url: "https://bharadwajgade.com",
+    siteName: "Bharadwaj Gade",
+    type: "website",
+  },
+  twitter: { card: "summary", title: "Bharadwaj Gade | Backend & AI Engineer", description: "Reliable AI pipelines, real-time data systems, and production SaaS." },
 };
 
 export default function RootLayout({
